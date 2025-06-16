@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
-from categorias.pantalla import pantalla_categoria
-def categoria_grid():
+from gastos.pantalla import pantalla_gastos
+def gastos_grid():
     ventana = tk.Tk()
-    ventana.title("Categoria")
+    ventana.title("Gastos")
     ventana.geometry("650x300")
 
     # Contenido superior
@@ -29,7 +29,7 @@ def categoria_grid():
     tabla.grid(row=0, column=0, columnspan=3, padx=10, pady=10, sticky="nsew")
 
     # Botones en la parte inferior
-    boton_nuevo = tk.Button(ventana, text="Nuevo",command=lambda:pantalla_categoria())
+    boton_nuevo = tk.Button(ventana, text="Nuevo",command=lambda:pantalla_gastos())
     boton_nuevo.grid(row=1, column=0, pady=20, padx=10, sticky="ew")
 
     boton_informe = tk.Button(ventana, text="Informe")

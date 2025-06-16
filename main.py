@@ -1,16 +1,9 @@
 import tkinter as tk  # Importamos la librería tkinter
+from gastos.grid import gastos_grid
+from gastosfijos.grid import gastosfijos_grid
+from presupuesto.grid import presupuesto_grid
+from categorias.grid import categoria_grid
 
-# Función que se ejecuta al hacer clic en el botón "Abrir nueva ventana"
-def abrir_ventana(ventana):
-    # Creamos una nueva ventana (Toplevel es una ventana secundaria de la ventana principal)
-    nueva_ventana = tk.Toplevel(ventana_principal)
-    
-    nueva_ventana.title("Nueva Ventana")  # Título de la nueva ventana
-    nueva_ventana.geometry("300x200")     # Tamaño de la nueva ventana
-
-    # Etiqueta dentro de la nueva ventana
-    etiqueta = tk.Label(nueva_ventana, text="¡Esta es una nueva ventana!")        
-    etiqueta.pack(pady=20)
 
 # Creamos la ventana principal
 ventana_principal = tk.Tk()
@@ -24,10 +17,10 @@ frame_botones.pack(pady=100)  # Añade espacio vertical y coloca el frame en la 
 boton_gastos = tk.Button(
     frame_botones, 
     text="GASTOS", 
-    command=lambda:abrir_ventana("gastos"),
+    command=lambda:gastos_grid(),
     width=12,             # ancho en caracteres
     height=2,             # alto en líneas
-    bg="red",             # color de fondo
+    bg="blue",             # color de fondo
     fg="white",           # color del texto
     font=("Helvetica", 10, "bold"),
     relief="raised",      # tipo de borde
@@ -38,10 +31,10 @@ boton_gastos.pack(side="left", padx=10)
 boton_gastos_fijos = tk.Button(
     frame_botones, 
     text="GASTOS FIJOS", 
-    command=lambda:abrir_ventana("gastos_fijos"),
+    command=lambda:gastosfijos_grid(),
     width=15,             # ancho en caracteres
     height=2,             # alto en líneas
-    bg="red",             # color de fondo
+    bg="blue",             # color de fondo
     fg="white",           # color del texto
     font=("Helvetica", 10, "bold"),
     relief="raised",      # tipo de borde
@@ -52,10 +45,10 @@ boton_gastos_fijos.pack(side="left", padx=10)
 boton_presupuestos = tk.Button(
     frame_botones, 
     text="PRESUPUESTOS", 
-    command=lambda:abrir_ventana("presupuestos"),
+    command=lambda:presupuesto_grid(),
     width=15,             # ancho en caracteres
     height=2,             # alto en líneas
-    bg="red",             # color de fondo
+    bg="blue",             # color de fondo
     fg="white",           # color del texto
     font=("Helvetica", 10, "bold"),
     relief="raised",      # tipo de borde
@@ -66,10 +59,10 @@ boton_presupuestos.pack(side="left", padx=10)
 boton_categorias = tk.Button(
     frame_botones, 
     text="CATEGORIAS", 
-    command=lambda:abrir_ventana("categorias"),
+    command=lambda:categoria_grid(),
     width=15,             # ancho en caracteres
     height=2,             # alto en líneas
-    bg="red",             # color de fondo
+    bg="blue",             # color de fondo
     fg="white",           # color del texto
     font=("Helvetica", 10, "bold"),
     relief="raised",      # tipo de borde
