@@ -8,7 +8,7 @@ from categorias.grid import categoria_grid
 # Creamos la ventana principal
 ventana_principal = tk.Tk()
 ventana_principal.title("Sistema de Finanzas Personales")  # Título de la ventana
-ventana_principal.geometry("800x300")         # Tamaño de la ventana
+ventana_principal.geometry("800x350")         # Tamaño de la ventana
 
 # Crear un frame (marco) para contener los botones horizontalmente
 frame_botones = tk.Frame(ventana_principal)

@@ -39,7 +39,7 @@ def pantalla_gastos():
     btn_cancelar = tk.Button(ventana, text="Cancelar",command=lambda:ventana.destroy())
 
     # Colocarlos en una fila debajo (fila 5)
-    btn_guardar.grid(row=5, column=0, padx=10, pady=20, sticky="e")
     btn_cancelar.grid(row=5, column=1, padx=10, pady=20, sticky="w")
+    btn_guardar.grid(row=5, column=0, padx=10, pady=20, sticky="e")
 
     ventana.mainloop()
