@@ -1,10 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
+
+# Importar utilidades de funciones
+from funciones.funciones import centrar_ventana
+
+
 def pantalla_gastos():
     #crea una ventana
     ventana = tk.Tk()
     ventana.title("Formulario de ingreso de  Gastos")
-    ventana.geometry("400x300")  # Tamaño opcional
+
+    centrar_ventana(ventana, 400, 300)
 
     #campos
     # Nombre

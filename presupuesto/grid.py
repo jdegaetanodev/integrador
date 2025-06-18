@@ -6,11 +6,14 @@ from presupuesto.pantalla import pantalla_presupuesto
 from datos.presupuestos import presupuestos
 from datos.categorias import categorias 
 
+# Importar utilidades de funciones
+from funciones.funciones import centrar_ventana
 
 def presupuesto_grid():
     ventana = tk.Tk()
     ventana.title("Presupuesto")
-    ventana.geometry("700x450")
+
+    centrar_ventana(ventana, 700, 450)
 
     # Contenido superior
     etiqueta = tk.Label(ventana, text="Administración de Presupuestos", font=("Arial", 16, "bold"))

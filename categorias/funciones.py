@@ -1,5 +1,6 @@
 import os
 import json
+from tkinter import messagebox
 
 RUTA_JSON = os.path.join("categorias", "categorias.json")
 
@@ -27,9 +28,13 @@ def update_categoria(id_categoria, categoria_txt):
         for categoria in categorias:
             if categoria["id_categoria"] == id_categoria:
                 categoria["nombre_categoria"] = categoria_txt
+                messagebox.showinfo("Éxito", "La categoría se guardó correctamente.")
                 return guardar_categorias(categorias)
+        
+        messagebox.showinfo("Éxito", "Se produjo un error al guardar la categoría. 1")
         return False
     except:
+        messagebox.showinfo("Éxito", "Se produjo un error al guardar la categoría. 2")
         return False
 
 def add_categoria(categoria_txt):
@@ -53,7 +58,7 @@ def delete_categoria(id_categoria):
         nuevas_categorias = [c for c in categorias if c["id_categoria"] != id_categoria]
 
         if len(nuevas_categorias) == len(categorias):
-            # No se encontró la categoría a eliminar
+            #No se encontró la categoría a eliminar
             return False
 
         return guardar_categorias(nuevas_categorias)

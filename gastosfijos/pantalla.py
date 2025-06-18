@@ -1,10 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
+
+# Importar utilidades de funciones
+from funciones.funciones import centrar_ventana
+
+
 def pantalla_gastosfijos():
 # Crear ventana principal
     ventana = tk.Tk()
     ventana.title("Formulario de Ingresos de Gastos Fijos")
-    ventana.geometry("450x400")
+
+    centrar_ventana(ventana, 450, 400)
 
     # --------- CAMPO: Nombre ---------
     tk.Label(ventana, text="Nombre:").grid(row=0, column=0, sticky="w", padx=10, pady=5)

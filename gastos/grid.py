@@ -6,11 +6,15 @@ from gastos.pantalla import pantalla_gastos
 from datos.gastos import gastos
 from datos.categorias import categorias
 
+# Importar utilidades de funciones
+from funciones.funciones import centrar_ventana
+
 
 def gastos_grid():
     ventana = tk.Tk()
     ventana.title("Gastos")
-    ventana.geometry("1200x450")
+
+    centrar_ventana(ventana, 1200, 450)
 
     # Contenido superior
     etiqueta = tk.Label(ventana, text="Administración de Gastos", font=("Arial", 16, "bold"))

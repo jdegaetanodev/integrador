@@ -1,3 +1,5 @@
+# Cargar los datos desde el json
+
 gastos_fijos = [
     {
         'id_gasto_fijo': 1,     # ID único del gasto fijo

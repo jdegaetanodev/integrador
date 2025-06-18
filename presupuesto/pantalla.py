@@ -1,9 +1,15 @@
 import tkinter as tk
 from tkinter import ttk
+
+# Importar utilidades de funciones
+from funciones.funciones import centrar_ventana
+
 def pantalla_presupuesto():
     ventana = tk.Tk()
     ventana.title("Formulario de Presupuesto")
-    ventana.geometry("400x300")
+
+    centrar_ventana(ventana, 400, 300)
+
     # Nombre
     tk.Label(ventana, text="Nombre:").grid(row=0, column=0, padx=10, pady=5, sticky="w")
     entry_nombre = tk.Entry(ventana)

@@ -1,14 +1,19 @@
 import tkinter as tk
 from tkinter import ttk
-from categorias.pantalla import pantalla_categoria,pantalla_categoria_edicion
+from categorias.pantalla import pantalla_categoria
 
 # Importar Diccionario
 from datos.categorias import categorias
 
+# Importar utilidades de funciones
+from funciones.funciones import centrar_ventana
+
+
 def categoria_grid():
     ventana = tk.Tk()
     ventana.title("Categoria")
-    ventana.geometry("430x300")
+
+    centrar_ventana(ventana, 430, 300)
 
     # Contenido superior
     etiqueta = tk.Label(ventana, text="Administración de Categorías", font=("Arial", 16, "bold"))
@@ -30,7 +35,7 @@ def categoria_grid():
     # <Fin Treeview>
 
     # Botones en la parte inferior
-    boton_nuevo = tk.Button(ventana, text="Nuevo",command=lambda:pantalla_categoria())
+    boton_nuevo = tk.Button(ventana, text="Nuevo",command=lambda:pantalla_categoria("add"))
     boton_nuevo.grid(row=2, column=0, pady=20, padx=10, sticky="ew")
 
     boton_informe = tk.Button(ventana, text="Informe")
@@ -48,7 +53,7 @@ def categoria_grid():
             id_categoria = valores[0]
             nombre = valores[1]
 
-            pantalla_categoria_edicion(id_categoria, nombre)  # Llama a la función pantalla_categoria con los valores seleccionados
+            pantalla_categoria("update", id_categoria, nombre)  # Llama a la función pantalla_categoria con los valores seleccionados
 
     tabla.bind("<ButtonRelease-1>", clic_grid)    
 

@@ -6,11 +6,15 @@ from gastosfijos.pantalla import pantalla_gastosfijos
 from datos.gastos_fijos import gastos_fijos
 from datos.categorias import categorias 
 
+# Importar utilidades de funciones
+from funciones.funciones import centrar_ventana
+
 
 def gastosfijos_grid():
     ventana = tk.Tk()
     ventana.title("Gastos Fijos")
-    ventana.geometry("950x300")
+
+    centrar_ventana(ventana, 950, 300)
 
     # Contenido superior
     etiqueta = tk.Label(ventana, text="Administración de Gastos Fijos", font=("Arial", 16, "bold"))

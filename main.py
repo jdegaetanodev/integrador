@@ -4,11 +4,14 @@ from gastosfijos.grid import gastosfijos_grid
 from presupuesto.grid import presupuesto_grid
 from categorias.grid import categoria_grid
 
+# Importar utilidades de funciones
+from funciones.funciones import centrar_ventana
 
 # Creamos la ventana principal
 ventana_principal = tk.Tk()
 ventana_principal.title("Sistema de Finanzas Personales")  # Título de la ventana
-ventana_principal.geometry("800x350")         # Tamaño de la ventana
+
+centrar_ventana(ventana_principal, 800, 350)
 
 # Crear un frame (marco) para contener los botones horizontalmente
 frame_botones = tk.Frame(ventana_principal)
