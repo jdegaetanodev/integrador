@@ -1,0 +1,2 @@
+gastosfijos_dict = {
+}
