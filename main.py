@@ -24,7 +24,7 @@ img_grafico = ImageTk.PhotoImage(img_grafico)
 # Colocar imagen como fondo usando un Label
 label_fondo = tk.Label(ventana_principal, image=img_grafico)
 label_fondo.place(x=0, y=0, relwidth=1, relheight=1)
-label_fondo.image = img_grafico  # 🔐 mantener referencia
+label_fondo.image = img_grafico  # mantener referencia
 
 # Crear frame encima del fondo para contener botones
 frame_botones = tk.Frame(ventana_principal, bg="", bd=0)
