@@ -3,9 +3,7 @@ import json
 from tkinter import messagebox
 from datos.categorias import categorias
 
-
 RUTA_JSON = os.path.join("categorias", "categorias.json")
-RUTA_DICT = os.path.join("datos", "categorias.py")
 
 def cargar_categorias():
     if not os.path.exists(RUTA_JSON):
@@ -21,42 +19,23 @@ def guardar_categorias(categorias):
     try:
         with open(RUTA_JSON, "w", encoding="utf-8") as archivo:
             json.dump(categorias, archivo, indent=4, ensure_ascii=False)
-        guardar_diccionario(categorias)
         return True
     except:
         return False
 
-def guardar_diccionario(categorias):
-    try:
-        texto = "categorias = {\n"
-        for c in categorias:
-            texto += f"    {c['id_categoria']}: \"{c['nombre_categoria']}\",\n"
-        texto += "}\n"
-        with open(RUTA_DICT, "w", encoding="utf-8") as archivo:
-            archivo.write(texto)
-    except:
-        pass  # Podés loguear errores si querés
-
 def update_categoria(id_categoria, categoria_txt):
-    print(f"Actualizando categoría con ID {id_categoria} a '{categoria_txt}'")
-
     try:
         categorias = cargar_categorias()
         for categoria in categorias:
-
-            print("ID recibido:", id_categoria, type(id_categoria))
-
-            if categoria["id_categoria"] == int(id_categoria):  # Asegura que ambos sean enteros
+            if categoria["id_categoria"] == id_categoria:
                 categoria["nombre_categoria"] = categoria_txt
-                resultado = guardar_categorias(categorias)
-                print("Guardado:", resultado)
-                return resultado
-
-        print("No se encontró la categoría con ese ID.")
+                messagebox.showinfo("Éxito", "La categoría se guardó correctamente.")
+                return guardar_categorias(categorias)
+        
+        messagebox.showinfo("Éxito", "Se produjo un error al guardar la categoría. 1")
         return False
-
-    except Exception as e:
-        print("Error al actualizar categoría:", e)
+    except:
+        messagebox.showinfo("Éxito", "Se produjo un error al guardar la categoría. 2")
         return False
 
 def add_categoria(categoria_txt):
@@ -78,8 +57,11 @@ def delete_categoria(id_categoria):
     try:
         categorias = cargar_categorias()
         nuevas_categorias = [c for c in categorias if c["id_categoria"] != id_categoria]
+
         if len(nuevas_categorias) == len(categorias):
+            #No se encontró la categoría a eliminar
             return False
+
         return guardar_categorias(nuevas_categorias)
     except:
         return False

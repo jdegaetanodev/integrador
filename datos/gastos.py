@@ -1,4 +1,4 @@
-gastos = [
+gastos_dic = [
     {
         'id_gastos': 1,           # ID único del gasto
         'id_categoria': 2,       # ID de la categoría a la que pertenece (ver 'categorias')

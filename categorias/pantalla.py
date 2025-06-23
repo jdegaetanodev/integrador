@@ -1,10 +1,10 @@
 import tkinter as tk
-# Importar utilidades de funciones
-from funciones.funciones import centrar_ventana
-
 from categorias.funciones import add_categoria,update_categoria
 
 def pantalla_categoria(accion, id= 0, nombre=''): # accion = add | update - id es opcional, solo se usa en update
+
+    # Importar utilidades de funciones
+    from funciones.funciones import centrar_ventana
 
     # Paso 1: Crear la ventana principal
     ventana = tk.Tk()
@@ -28,9 +28,10 @@ def pantalla_categoria(accion, id= 0, nombre=''): # accion = add | update - id e
     
     if accion == "add":
         btn_guardar = tk.Button(botonera, text="Guardar",command=lambda:add_categoria(entrada_categoria.get()))
+        print("Agregar nueva categoría")
     else:
         btn_guardar = tk.Button(botonera, text="Guardar",command=lambda:update_categoria(id, entrada_categoria.get()))
-
+        print("Actualizar categoría existente")
 
     # Mostrar botones    
     btn_guardar.pack(side="right", padx=5)

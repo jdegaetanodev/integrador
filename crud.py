@@ -18,8 +18,8 @@ def mostrar_frame(nombre_frame):
 
 
 # Importar Diccionarios
-from datos.gastos import gastos 
-from datos.categorias import categorias_dict as categorias
+from datos.gastos import gastos_dic as gastos 
+from datos.categorias import categorias
 from datos.gastos_fijos import gastos_fijos
 from datos.presupuesto import presupuesto_dict as presupuestos
 
@@ -29,6 +29,7 @@ from funciones.funciones import centrar_ventana
 
 # Importar Gastos
 from gastos.pantalla import pantalla_gastos
+from categorias.pantalla import pantalla_categoria
 
 
 ventana = tk.Tk()
@@ -53,23 +54,23 @@ label.grid(row=0, column=0, sticky="w", padx=0)
 from PIL import Image, ImageTk
 
 # <Inicio Treeview>
-tabla = ttk.Treeview(frame_gastos, columns=("ID", "Categoria","Nombre","Monto","Detalle","Fecha"), show="headings", height=22)
-tabla.heading("ID", text="ID Gasto")
-tabla.heading("Categoria", text="Categoría")
-tabla.heading("Nombre", text="Nombre")
-tabla.heading("Monto", text="Monto")
-tabla.heading("Detalle", text="Detalle")
-tabla.heading("Fecha", text="Fecha")
+tabla_gastos = ttk.Treeview(frame_gastos, columns=("ID", "Categoria","Nombre","Monto","Detalle","Fecha"), show="headings", height=22)
+tabla_gastos.heading("ID", text="ID Gasto")
+tabla_gastos.heading("Categoria", text="Categoría")
+tabla_gastos.heading("Nombre", text="Nombre")
+tabla_gastos.heading("Monto", text="Monto")
+tabla_gastos.heading("Detalle", text="Detalle")
+tabla_gastos.heading("Fecha", text="Fecha")
 
 # Configuración de columnas [w=izquierda - e=derecha]
-tabla.column("ID", width=100,anchor='center')
-tabla.column("Categoria", width=100,anchor='w')
-tabla.column("Nombre", width=100,anchor='w')
-tabla.column("Monto", width=100,anchor='e')
-tabla.column("Detalle", width=200,anchor='w')
-tabla.column("Fecha", width=100,anchor='e')
+tabla_gastos.column("ID", width=100,anchor='center')
+tabla_gastos.column("Categoria", width=100,anchor='w')
+tabla_gastos.column("Nombre", width=100,anchor='w')
+tabla_gastos.column("Monto", width=100,anchor='e')
+tabla_gastos.column("Detalle", width=200,anchor='w')
+tabla_gastos.column("Fecha", width=100,anchor='e')
 
-tabla.grid()
+tabla_gastos.grid()
 
 # Paso importante: Convertir la lista de categorías a un diccionario para acceso rápido
 categorias_dict = {c['id_categoria']: c for c in categorias}
@@ -80,7 +81,7 @@ for gasto in gastos:
     # Obtener el nombre de la categoría
     categoria_nombre = categorias_dict.get(gasto['id_categoria'], {}).get('nombre_categoria', 'Desconocida')     
 
-    tabla.insert("", "end", values=(gasto['id_gastos'], 
+    tabla_gastos.insert("", "end", values=(gasto['id_gastos'], 
                                     categoria_nombre,
                                     gasto['nombre'],
                                     gasto['monto'],
@@ -105,17 +106,16 @@ btn_nuevo.grid(row=2, column=0, sticky="e", pady=20)
 # Fin Button Nuevo
 
 def clic_grid(event):
-    item_seleccionado = tabla.focus()  # obtiene el "item ID" seleccionado
+    item_seleccionado = tabla_gastos.focus()  # obtiene el "item ID" seleccionado
 
     if item_seleccionado:
-        valores = tabla.item(item_seleccionado, "values")  # obtengo los valores de la fila
+        valores = tabla_gastos.item(item_seleccionado, "values")  # obtengo los valores de la fila
         id_categoria = valores[0]
         nombre = valores[1]
 
-        #pantalla_categoria("update", id_categoria, nombre)  # Llama a la función pantalla_categoria con los valores seleccionados
+        pantalla_categoria("update", id_categoria, nombre)  # Llama a la función pantalla_categoria con los valores seleccionados
 
-tabla.bind("<ButtonRelease-1>", clic_grid)    
-
+tabla_gastos.bind("<ButtonRelease-1>", clic_grid)    
 
 
 # </-----Fin Frame Gastos----->
@@ -130,25 +130,23 @@ label = tk.Label(frame_gastos_fijos, text="Gastos Fijos", pady="15",anchor="w",f
 label.grid(row=0, column=0, sticky="w", padx=0)
 
 # <Inicio Treeview>
-tabla = ttk.Treeview(frame_gastos_fijos, columns=("ID", "Categoria","Monto","Descripcion","Mes","Año","FechaPago"), show="headings", height=22)
-tabla.heading("ID", text="ID Presupuesto")
-tabla.heading("Categoria", text="Categoria")
-tabla.heading("Monto", text="Monto")
-tabla.heading("Descripcion", text="Descripcion")
-tabla.heading("Mes", text="Mes")
-tabla.heading("Año", text="Año")
-tabla.heading("FechaPago", text="Fecha Pago")
+tabla_gastos_fijos = ttk.Treeview(frame_gastos_fijos, columns=("ID", "Categoria","Monto","Descripcion","Mes","Año","FechaPago"), show="headings", height=22)
+tabla_gastos_fijos.heading("ID", text="ID Presupuesto")
+tabla_gastos_fijos.heading("Categoria", text="Categoria")
+tabla_gastos_fijos.heading("Monto", text="Monto")
+tabla_gastos_fijos.heading("Descripcion", text="Descripcion")
+tabla_gastos_fijos.heading("Mes", text="Mes")
+tabla_gastos_fijos.heading("Año", text="Año")
+tabla_gastos_fijos.heading("FechaPago", text="Fecha Pago")
 
 # Configuración de columnas
-tabla.column("ID", width=100,anchor='center')
-tabla.column("Categoria", width=100,anchor='e')
-tabla.column("Monto", width=100,anchor='e')
-tabla.column("Descripcion", width=250,anchor='w')
-tabla.column("Mes", width=50,anchor='e')
-tabla.column("Año", width=50,anchor='e')
-tabla.column("FechaPago", width=50,anchor='e')
-
-# tabla.grid(row=1, column=0, columnspan=3, sticky="nsew", padx=10)
+tabla_gastos_fijos.column("ID", width=100,anchor='center')
+tabla_gastos_fijos.column("Categoria", width=100,anchor='e')
+tabla_gastos_fijos.column("Monto", width=100,anchor='e')
+tabla_gastos_fijos.column("Descripcion", width=250,anchor='w')
+tabla_gastos_fijos.column("Mes", width=50,anchor='e')
+tabla_gastos_fijos.column("Año", width=50,anchor='e')
+tabla_gastos_fijos.column("FechaPago", width=50,anchor='e')
 
 # Paso importante: Convertir la lista de categorías a un diccionario para acceso rápido
 categorias_dict = {c['id_categoria']: c for c in categorias}
@@ -160,7 +158,7 @@ for gasto_fijo in gastos_fijos:
     # Obtener el nombre de la categoría
     categoria_nombre = categorias_dict.get(gasto_fijo['id_categoria'], {}).get('nombre_categoria', 'Desconocida')       
 
-    tabla.insert("", "end", values=(gasto_fijo['id_gasto_fijo'], 
+    tabla_gastos_fijos.insert("", "end", values=(gasto_fijo['id_gasto_fijo'], 
                                     categoria_nombre,
                                     gasto_fijo['monto'],
                                     gasto_fijo['descripcion'],
@@ -172,7 +170,7 @@ for gasto_fijo in gastos_fijos:
 # <Fin Treeview>
 
 # Ubicar la tabla con grid
-tabla.grid()
+tabla_gastos_fijos.grid()
 
 # Button Nuevo
 btn_nuevo = tk.Button(  frame_gastos_fijos,
@@ -200,41 +198,48 @@ label = tk.Label(frame_categorias, text="Categorias", pady="15",anchor="w",font=
 label.grid(row=0, column=0, sticky="w", padx=0)
 
 # <Inicio Treeview>
-tabla = ttk.Treeview(frame_categorias, columns=("ID", "Nombre"), show="headings", height=22)
-tabla.heading("ID", text="ID Categoría")
-tabla.heading("Nombre", text="Nombre Categoría")
+tabla_categorias = ttk.Treeview(frame_categorias, columns=("ID", "Nombre"), show="headings", height=22)
+tabla_categorias.heading("ID", text="ID Categoría")
+tabla_categorias.heading("Nombre", text="Nombre Categoría")
 
 # Configuración de columnas
-tabla.column("ID", width=100,anchor='center')
-tabla.column("Nombre", width=600,anchor='e')
+tabla_categorias.column("ID", width=100,anchor='center')
+tabla_categorias.column("Nombre", width=600,anchor='w')
 
 # Insertar datos en el Treeview
 for categoria in categorias:
-    tabla.insert("", "end", values=(categoria['id_categoria'], categoria['nombre_categoria']))
+    tabla_categorias.insert("", "end", values=(categoria['id_categoria'], categoria['nombre_categoria']))
 
 # <Fin Treeview>
 
 # Ubicar la tabla con grid
-tabla.grid()
+tabla_categorias.grid()
 
 def clic_grid(event):
-    item_seleccionado = tabla.focus()  # obtiene el "item ID" seleccionado
+    tabla_categorias.after(100, procesar_click)  # Espera 100 ms antes de procesar
+
+def procesar_click():
+    item_seleccionado = tabla_categorias.focus()  # obtiene el "item ID" seleccionado
+
+    print(item_seleccionado)
 
     if item_seleccionado:
-        valores = tabla.item(item_seleccionado, "values")  # obtengo los valores de la fila
+        valores = tabla_categorias.item(item_seleccionado, "values")  # obtengo los valores de la fila
         id_categoria = valores[0]
         nombre = valores[1]
 
-        #pantalla_categoria("update", id_categoria, nombre)  # Llama a la función pantalla_categoria con los valores seleccionados
+        pantalla_categoria("update", id_categoria, nombre)  # Llama a la función pantalla_categoria con los valores seleccionados
 
-tabla.bind("<ButtonRelease-1>", clic_grid)       
+# tabla.bind("<ButtonRelease-1>", clic_grid)     
+
+tabla_categorias.bind("<<TreeviewSelect>>", clic_grid)
 
 # Button Nuevo
 btn_nuevo = tk.Button(  frame_categorias,
                         width=15,
                         height=2,
                         text="NUEVO",
-                        command=lambda: pantalla_gastos(),
+                        command=lambda: pantalla_categoria("add"),
                         bg="#B57EDC",
                         fg="white",
                         font=("Helvetica", 10, "bold"),
@@ -254,21 +259,21 @@ label = tk.Label(frame_presupuestos, text="Presupuestos", pady="15",anchor="w",f
 label.grid(row=0, column=0, sticky="w", padx=0)
 
 # <Inicio Treeview>
-tabla = ttk.Treeview(frame_presupuestos, columns=("ID", "Categoria","Monto","Descripcion","Mes","Año"), show="headings", height=22)
-tabla.heading("ID", text="ID Presupuesto")
-tabla.heading("Categoria", text="Categoria")
-tabla.heading("Monto", text="Monto")
-tabla.heading("Descripcion", text="Descripcion")
-tabla.heading("Mes", text="Mes")
-tabla.heading("Año", text="Año")
+tabla_presupuestos = ttk.Treeview(frame_presupuestos, columns=("ID", "Categoria","Monto","Descripcion","Mes","Año"), show="headings", height=22)
+tabla_presupuestos.heading("ID", text="ID Presupuesto")
+tabla_presupuestos.heading("Categoria", text="Categoria")
+tabla_presupuestos.heading("Monto", text="Monto")
+tabla_presupuestos.heading("Descripcion", text="Descripcion")
+tabla_presupuestos.heading("Mes", text="Mes")
+tabla_presupuestos.heading("Año", text="Año")
 
 # Configuración de columnas
-tabla.column("ID", width=80,anchor='center')
-tabla.column("Categoria", width=200,anchor='e')
-tabla.column("Monto", width=100,anchor='e')
-tabla.column("Descripcion", width=120,anchor='w')
-tabla.column("Mes", width=100,anchor='e')
-tabla.column("Año", width=100,anchor='e')
+tabla_presupuestos.column("ID", width=80,anchor='center')
+tabla_presupuestos.column("Categoria", width=200,anchor='e')
+tabla_presupuestos.column("Monto", width=100,anchor='e')
+tabla_presupuestos.column("Descripcion", width=120,anchor='w')
+tabla_presupuestos.column("Mes", width=100,anchor='e')
+tabla_presupuestos.column("Año", width=100,anchor='e')
 
 
 # Paso importante: Convertir la lista de categorías a un diccionario para acceso rápido
@@ -280,7 +285,7 @@ for presupuesto in presupuestos:
     # Obtener el nombre de la categoría
     categoria_nombre = categorias_dict.get(presupuesto['id_categoria'], {}).get('nombre_categoria', 'Desconocida')               
 
-    tabla.insert("", "end", values=(presupuesto['id_presupuesto'], 
+    tabla_presupuestos.insert("", "end", values=(presupuesto['id_presupuesto'], 
                                     categoria_nombre,
                                     presupuesto['monto_presupuesto'],
                                     presupuesto['descripcion'],
@@ -288,7 +293,7 @@ for presupuesto in presupuestos:
                                     presupuesto['anio']))
     
 
-tabla.grid()
+tabla_presupuestos.grid()
 
 # <Fin Treeview>
 

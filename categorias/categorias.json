@@ -1,0 +1,10 @@
+[
+    {
+        "id_categoria": 1,
+        "nombre_categoria": "Combustibles"
+    },
+    {
+        "id_categoria": 2,
+        "nombre_categoria": "Supermercado"
+    }
+]
