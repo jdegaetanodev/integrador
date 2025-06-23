@@ -1,3 +1,3 @@
-categorias_dict = {
+categorias = {
    
 }
