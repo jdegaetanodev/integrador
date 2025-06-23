@@ -18,8 +18,8 @@ def mostrar_frame(nombre_frame):
 
 
 # Importar Diccionarios
-from datos.gastos import gastos_dic as gastos 
-from datos.categorias import categorias
+from datos.gastos import gastos 
+from datos.categorias import categorias_dict as categorias
 from datos.gastos_fijos import gastos_fijos
 from datos.presupuesto import presupuesto_dict as presupuestos
 
