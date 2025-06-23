@@ -26,20 +26,21 @@ def guardar_gastos(gastos):
 
 def guardar_diccionario(gastos):
     try:
-        texto = "gastos_dict = {\n"
+        texto = "gastos = [\n"
         for g in gastos:
-            texto += f"    {g['id_gastos']}: {{\n"
+            texto += "    {\n"
+            texto += f"        'id_gastos': {g['id_gastos']},\n"
             texto += f"        'id_categoria': {g['id_categoria']},\n"
             texto += f"        'nombre': \"{g['nombre']}\",\n"
             texto += f"        'monto': {g['monto']},\n"
             texto += f"        'detalle': \"{g['detalle']}\",\n"
             texto += f"        'fecha': \"{g['fecha']}\"\n"
-            texto += f"    }},\n"
-        texto += "}\n"
+            texto += "    },\n"
+        texto += "]\n"
         with open(RUTA_DICT, "w", encoding="utf-8") as archivo:
             archivo.write(texto)
     except:
-        pass  # Opcional: loguear error
+        pass
 
 def add_gasto(gasto):
     """

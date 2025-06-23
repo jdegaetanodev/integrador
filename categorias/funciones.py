@@ -1,8 +1,6 @@
 import os
 import json
 from tkinter import messagebox
-from datos.categorias import categorias
-
 
 RUTA_JSON = os.path.join("categorias", "categorias.json")
 RUTA_DICT = os.path.join("datos", "categorias.py")
@@ -14,52 +12,64 @@ def cargar_categorias():
         with open(RUTA_JSON, "r", encoding="utf-8") as archivo:
             categorias = json.load(archivo)
         return categorias
-    except:
+    except Exception as e:
+        print("Error al cargar categorías:", e)
         return []
 
 def guardar_categorias(categorias):
     try:
+        # Crear carpeta si no existe
+        os.makedirs(os.path.dirname(RUTA_JSON), exist_ok=True)
+
         with open(RUTA_JSON, "w", encoding="utf-8") as archivo:
             json.dump(categorias, archivo, indent=4, ensure_ascii=False)
-        guardar_diccionario(categorias)
+            archivo.flush()
+            os.fsync(archivo.fileno())
+
         return True
-    except:
+    except Exception as e:
+        print("Error en guardar_categorias:", e)
         return False
 
 def guardar_diccionario(categorias):
     try:
-        texto = "categorias = {\n"
+        texto = "categorias = [\n"
         for c in categorias:
-            texto += f"    {c['id_categoria']}: \"{c['nombre_categoria']}\",\n"
-        texto += "}\n"
+            texto += "    {\n"
+            texto += f"        'id_categoria': {c['id_categoria']},\n"
+            texto += f"        'nombre_categoria': \"{c['nombre_categoria']}\"\n"
+            texto += "    },\n"
+        texto += "]\n"
         with open(RUTA_DICT, "w", encoding="utf-8") as archivo:
             archivo.write(texto)
-    except:
-        pass  # Podés loguear errores si querés
+    except Exception as e:
+        print("Error en guardar_diccionario:", e)
+        pass
 
-def update_categoria(id_categoria, categoria_txt):
-    print(f"Actualizando categoría con ID {id_categoria} a '{categoria_txt}'")
-
+def update_categoria(id_categoria, categoria_txt, ventana_categoria, callback_actualizar=None):
     try:
         categorias = cargar_categorias()
         for categoria in categorias:
-
-            print("ID recibido:", id_categoria, type(id_categoria))
-
-            if categoria["id_categoria"] == int(id_categoria):  # Asegura que ambos sean enteros
+            if categoria["id_categoria"] == int(id_categoria):
                 categoria["nombre_categoria"] = categoria_txt
-                resultado = guardar_categorias(categorias)
-                print("Guardado:", resultado)
-                return resultado
-
-        print("No se encontró la categoría con ese ID.")
+                guardado = guardar_categorias(categorias)
+                if guardado:
+                    messagebox.showinfo("Éxito", "Categoría actualizada correctamente.")
+                    if callback_actualizar:
+                        callback_actualizar()
+                    ventana_categoria.destroy()
+                    return True
+                else:
+                    messagebox.showerror("Error", "No se pudo guardar la categoría.")
+                    return False
+        messagebox.showerror("Error", "No se encontró la categoría con ese ID.")
         return False
-
     except Exception as e:
-        print("Error al actualizar categoría:", e)
+        print("Error en update_categoria:", e)
+        messagebox.showerror("Error", "Ocurrió un error al actualizar la categoría.")
         return False
 
-def add_categoria(categoria_txt):
+def add_categoria(categoria_txt, ventana_categoria, callback_actualizar=None):
     try:
         categorias = cargar_categorias()
         nuevo_id = 1
@@ -70,16 +80,28 @@ def add_categoria(categoria_txt):
             "nombre_categoria": categoria_txt
         }
         categorias.append(nueva_categoria)
-        return guardar_categorias(categorias)
-    except:
+        guardado = guardar_categorias(categorias)
+        if guardado:
+            messagebox.showinfo("Éxito", "Categoría añadida correctamente.")
+            if callback_actualizar:
+                callback_actualizar()
+            ventana_categoria.destroy()
+            return True
+        else:
+            messagebox.showerror("Error", "No se pudo guardar la nueva categoría.")
+            return False
+    except Exception as e:
+        print("Error en add_categoria:", e)
+        messagebox.showerror("Error", "Ocurrió un error al añadir la categoría.")
         return False
 
 def delete_categoria(id_categoria):
     try:
         categorias = cargar_categorias()
-        nuevas_categorias = [c for c in categorias if c["id_categoria"] != id_categoria]
+        nuevas_categorias = [c for c in categorias if c["id_categoria"] != int(id_categoria)]
         if len(nuevas_categorias) == len(categorias):
             return False
         return guardar_categorias(nuevas_categorias)
-    except:
+    except Exception as e:
+        print("Error en delete_categoria:", e)
         return False

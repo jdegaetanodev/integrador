@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk # Importo el TreeView
+from categorias.funciones import cargar_categorias
 
 # Funciones
 
@@ -19,7 +20,10 @@ def mostrar_frame(nombre_frame):
 
 # Importar Diccionarios
 from datos.gastos import gastos 
-from datos.categorias import categorias_dict as categorias
+
+from categorias.funciones import cargar_categorias
+categorias = cargar_categorias()
+
 from datos.gastos_fijos import gastos_fijos
 from datos.presupuesto import presupuesto_dict as presupuestos
 
@@ -116,7 +120,6 @@ def clic_grid(event):
         pantalla_categoria("update", id_categoria, nombre)  # Llama a la función pantalla_categoria con los valores seleccionados
 
 tabla_gastos.bind("<ButtonRelease-1>", clic_grid)    
-
 
 # </-----Fin Frame Gastos----->
 
@@ -215,20 +218,36 @@ for categoria in categorias:
 # Ubicar la tabla con grid
 tabla_categorias.grid()
 
+def actualizar_tabla_categorias():
+
+    print("Actualizando tabla de categorías...")
+
+    # 1. Borrar todo lo que tiene actualmente
+    for fila in tabla_categorias.get_children():
+        tabla_categorias.delete(fila)
+
+    # 2. Volver a cargar desde el JSON
+    categorias_actualizadas = cargar_categorias()
+    print("Categorías cargadas:", categorias_actualizadas)  # <- DEBUG    
+
+    # 3. Insertar las categorías nuevamente
+    for categoria in categorias_actualizadas:
+        tabla_categorias.insert("", "end", values=(categoria['id_categoria'], categoria['nombre_categoria']))
+        print(f"Insertando categoría: {categoria['id_categoria']} - {categoria['nombre_categoria']}")
+
+
 def clic_grid(event):
     tabla_categorias.after(100, procesar_click)  # Espera 100 ms antes de procesar
 
 def procesar_click():
     item_seleccionado = tabla_categorias.focus()  # obtiene el "item ID" seleccionado
 
-    print(item_seleccionado)
-
     if item_seleccionado:
         valores = tabla_categorias.item(item_seleccionado, "values")  # obtengo los valores de la fila
         id_categoria = valores[0]
         nombre = valores[1]
 
-        pantalla_categoria("update", id_categoria, nombre)  # Llama a la función pantalla_categoria con los valores seleccionados
+        pantalla_categoria("update", id_categoria, nombre, callback_actualizar=actualizar_tabla_categorias)  # Llama a la función pantalla_categoria con los valores seleccionados
 
 # tabla.bind("<ButtonRelease-1>", clic_grid)     
 

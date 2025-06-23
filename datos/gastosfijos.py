@@ -1,2 +1,0 @@
-gastosfijos_dict = {
-}

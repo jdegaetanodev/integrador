@@ -1,10 +1,14 @@
 [
     {
         "id_categoria": 1,
-        "nombre_categoria": "Combustibles"
+        "nombre_categoria": "Supermercado 123"
     },
     {
         "id_categoria": 2,
-        "nombre_categoria": "Supermercado"
+        "nombre_categoria": "Transporte 2020"
+    },
+    {
+        "id_categoria": 3,
+        "nombre_categoria": "Verduleria"
     }
 ]

@@ -1,4 +1,19 @@
 import funciones
+import importlib.util
+import os
+
+RUTA_DICT = os.path.join("datos", "categorias.py")
+
+def mostrar_diccionario_actual():
+    try:
+        spec = importlib.util.spec_from_file_location("categorias", RUTA_DICT)
+        modulo = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(modulo)
+        print("\n📁 Diccionario actual en datos/categorias.py:")
+        for c in modulo.categorias:
+            print(f"ID: {c['id_categoria']} - Nombre: {c['nombre_categoria']}")
+    except Exception as e:
+        print(f"Error al cargar el diccionario: {e}")
 
 def listar_categorias():
     categorias = funciones.cargar_categorias()
@@ -17,6 +32,7 @@ def agregar_categoria():
     resultado = funciones.add_categoria(nombre)
     if resultado:
         print("Categoría agregada correctamente.")
+        mostrar_diccionario_actual()
     else:
         print("Error al agregar la categoría.")
 
@@ -34,6 +50,7 @@ def modificar_categoria():
     resultado = funciones.update_categoria(id_categoria, nombre)
     if resultado:
         print("Categoría modificada correctamente.")
+        mostrar_diccionario_actual()
     else:
         print("No se pudo modificar la categoría (ID no encontrado).")
 
@@ -51,6 +68,7 @@ def eliminar_categoria():
     resultado = funciones.delete_categoria(id_categoria)
     if resultado:
         print("Categoría eliminada correctamente.")
+        mostrar_diccionario_actual()
     else:
         print("No se pudo eliminar la categoría (ID no encontrado).")
 
@@ -60,7 +78,8 @@ def mostrar_menu():
     print("2. Agregar categoría")
     print("3. Modificar categoría")
     print("4. Eliminar categoría")
-    print("5. Salir")
+    print("5. Ver diccionario actual")
+    print("6. Salir")
 
 def main():
     while True:
@@ -76,6 +95,8 @@ def main():
         elif opcion == "4":
             eliminar_categoria()
         elif opcion == "5":
+            mostrar_diccionario_actual()
+        elif opcion == "6":
             print("Saliendo...")
             break
         else:

@@ -6,12 +6,13 @@ RUTA_DICT = os.path.join("datos", "gastos.py")
 
 def mostrar_diccionario_actual():
     try:
-        spec = importlib.util.spec_from_file_location("gastos_dict", RUTA_DICT)
+        spec = importlib.util.spec_from_file_location("gastos", RUTA_DICT)
         modulo = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(modulo)
         print("\n📁 Diccionario actual en datos/gastos.py:")
-        for k, v in modulo.gastos_dict.items():
-            print(f"ID: {k} - Categoria: {v['id_categoria']} - Nombre: {v['nombre']} - Monto: {v['monto']} - Detalle: {v['detalle']} - Fecha: {v['fecha']}")
+        # Asumimos que modulo.gastos es una lista de dicts:
+        for g in modulo.gastos:
+            print(f"ID: {g.get('id_gastos', 'N/A')} - Categoria: {g.get('id_categoria', 'N/A')} - Nombre: {g.get('nombre', '')} - Monto: {g.get('monto', 0)} - Detalle: {g.get('detalle', '')} - Fecha: {g.get('fecha', '')}")
     except Exception as e:
         print(f"Error al cargar el diccionario: {e}")
 
