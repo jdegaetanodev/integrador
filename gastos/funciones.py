@@ -17,11 +17,17 @@ def cargar_gastos():
 
 def guardar_gastos(gastos):
     try:
+        # Crear carpeta si no existe
+        os.makedirs(os.path.dirname(RUTA_JSON), exist_ok=True)
+
         with open(RUTA_JSON, "w", encoding="utf-8") as archivo:
             json.dump(gastos, archivo, indent=4, ensure_ascii=False)
-        guardar_diccionario(gastos)
+            archivo.flush()
+            os.fsync(archivo.fileno())
+
         return True
-    except:
+    except Exception as e:
+        print("Error en guardar_gastos:", e)
         return False
 
 def guardar_diccionario(gastos):
@@ -42,34 +48,82 @@ def guardar_diccionario(gastos):
     except:
         pass
 
-def add_gasto(gasto):
-    """
-    gasto es un diccionario con keys: id_categoria, nombre, monto, detalle, fecha
-    """
-    try:
-        gastos = cargar_gastos()
-        nuevo_id = 1
-        if gastos:
-            nuevo_id = max(g["id_gastos"] for g in gastos) + 1
-        gasto["id_gastos"] = nuevo_id
-        gastos.append(gasto)
-        return guardar_gastos(gastos)
-    except:
-        return False
+def add_gasto(nombre, id_categoria, monto, fecha, descripcion, ventana_gastos, callback_actualizar=None):   
 
-def update_gasto(id_gasto, nuevo_gasto):
-    """
-    nuevo_gasto es un diccionario con keys: id_categoria, nombre, monto, detalle, fecha
-    """
-    try:
-        gastos = cargar_gastos()
-        for gasto in gastos:
-            if gasto["id_gastos"] == id_gasto:
-                gasto.update(nuevo_gasto)
-                return guardar_gastos(gastos)
-        return False
-    except:
-        return False
+    if validar_datos(id_categoria, nombre, monto, fecha, descripcion):   
+
+        try:
+            gastos = cargar_gastos()
+            nuevo_id = 1
+            if gastos:
+                nuevo_id = max(c["id_gastos"] for c in gastos) + 1
+
+            nuevo_gasto = {
+                "id_gastos": nuevo_id,
+                "nombre": nombre,
+                "id_categoria": id_categoria,
+                "monto": monto,
+                "fecha": fecha,
+                "descripcion": descripcion
+            }
+
+            gastos.append(nuevo_gasto)
+            guardado = guardar_gastos(gastos)
+
+            if guardado:
+                messagebox.showinfo("Éxito", "Gasto cargado correctamente.")
+                if callback_actualizar:
+                    callback_actualizar()
+                ventana_gastos.destroy()
+                return True
+            else:
+                messagebox.showerror("Error", "No se pudo guardar el gasto.")
+                return False
+        except Exception as e:
+            print("Error en add_gasto:", e)
+            messagebox.showerror("Error", "Ocurrió un error al añadir el gasto.")
+            return False
+    else:
+        messagebox.showerror("Error", "Por favor complete todos los campos del formulario")
+
+
+def update_gasto(id_gasto, id_categoria, nombre, categoria, monto, fecha, detalle, ventana_gasto, callback_actualizar):
+
+    if validar_datos(id_categoria, nombre, monto, fecha, detalle):   
+
+        try:
+            nuevo_gasto = {
+                "id_categoria": int(id_categoria),
+                "nombre": nombre,
+                "categoria": categoria,
+                "monto": monto,
+                "fecha": fecha,
+                "detalle": detalle
+            }
+
+            gastos = cargar_gastos()
+            for gasto in gastos:
+
+                if gasto["id_gastos"] == int(id_gasto):
+                    gasto.update(nuevo_gasto)
+                    guardado = guardar_gastos(gastos)
+                    if guardado:
+                        messagebox.showinfo("Éxito", "Gasto actualizado correctamente.")
+                        if callback_actualizar:
+                            callback_actualizar()
+                        ventana_gasto.destroy()
+                        return True
+                    else:
+                        messagebox.showerror("Error", "No se pudo guardar el gasto.")
+                        return False
+            messagebox.showerror("Error", "No se encontró un Gasto con ese ID.")
+            return False
+        except Exception as e:
+            print("Error en update_gasto:", e)
+            messagebox.showerror("Error", "Ocurrió un error al actualizar el gasto.")
+            return False
+    else:
+        messagebox.showerror("Error", "Por favor complete todos los campos del formulario")
 
 def delete_gasto(id_gasto):
     try:
@@ -80,3 +134,9 @@ def delete_gasto(id_gasto):
         return guardar_gastos(nuevos_gastos)
     except:
         return False
+
+def exportar_gastos():
+    messagebox.showinfo("Éxito", "En esta Función se exportan los Gastos")
+
+def validar_datos(id_categoria, nombre, monto, fecha, detalle):    
+    return True      

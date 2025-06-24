@@ -79,3 +79,6 @@ def delete_presupuesto(id_presupuesto):
         return guardar_presupuestos(nuevos_presupuestos)
     except:
         return False
+
+def exportar_presupuesto():
+    messagebox.showinfo("Éxito", "En esta Función se exportan los Presupuestos")

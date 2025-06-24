@@ -1,0 +1,50 @@
+[
+    {
+        "id_gastos": 1,
+        "nombre": "Prueba de Gasto",
+        "id_categoria": 1,
+        "monto": "30000",
+        "fecha": "15/05/2025",
+        "descripcion": "Descripcion de Gasto"
+    },
+    {
+        "id_gastos": 2,
+        "nombre": "Nafta",
+        "id_categoria": 2,
+        "monto": "83000",
+        "fecha": "01/01/2024",
+        "descripcion": "Descripción de Gastos",
+        "categoria": "Combustible",
+        "detalle": "Descripción de Gastos"
+    },
+    {
+        "id_gastos": 3,
+        "nombre": "Alimento para perros",
+        "id_categoria": 3,
+        "monto": "27500",
+        "fecha": "01/01/2024",
+        "descripcion": "Descripción de gastos",
+        "categoria": "Verduleria",
+        "detalle": "Descripción de gastos"
+    },
+    {
+        "id_gastos": 4,
+        "nombre": "Reparación bicicleta",
+        "id_categoria": 2,
+        "monto": "12000",
+        "fecha": "01/01/2020",
+        "descripcion": "Cambio de la cubierta de la bici",
+        "categoria": "Transporte",
+        "detalle": "Cambio de la cubierta de la bici"
+    },
+    {
+        "id_gastos": 5,
+        "nombre": "Almuerzo en oficina",
+        "id_categoria": 5,
+        "monto": "2000",
+        "fecha": "01/01/2022",
+        "descripcion": "Sandwich y Gaseosa",
+        "categoria": "Verduleria",
+        "detalle": "Sandwich y Gaseosa"
+    }
+]

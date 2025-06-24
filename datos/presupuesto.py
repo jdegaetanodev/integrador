@@ -1,2 +1,0 @@
-presupuesto_dict = {
-}

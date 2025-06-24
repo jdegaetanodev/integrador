@@ -1,0 +1,35 @@
+[
+    {
+        "id_categoria": 4,
+        "nombre": "Servicios",
+        "monto": 45000.0,
+        "descripcion": "Ya esta pago",
+        "mes": "Julio",
+        "anio": "2025",
+        "abonado": "Sí",
+        "fecha_pago": "10/07/2025",
+        "id_gasto_fijo": 1
+    },
+    {
+        "id_categoria": 1,
+        "nombre": "Supermercado",
+        "monto": 38000.0,
+        "descripcion": "Descripcion del gasto",
+        "mes": "Julio",
+        "anio": "2025",
+        "abonado": "Sí",
+        "fecha_pago": "01/01/2026",
+        "id_gasto_fijo": 2
+    },
+    {
+        "id_categoria": 7,
+        "nombre": "Servicios",
+        "monto": 98000.0,
+        "descripcion": "Texto de pruebas",
+        "mes": "Julio",
+        "anio": "2025",
+        "abonado": "Sí",
+        "fecha_pago": "10/06/2025",
+        "id_gasto_fijo": 3
+    }
+]

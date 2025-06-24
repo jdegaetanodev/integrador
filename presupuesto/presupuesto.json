@@ -1,0 +1,18 @@
+[
+    {
+        "id_categoria": 3,
+        "monto_presupuesto": 48000.0,
+        "descripcion": "Presupuesto para la verduleria",
+        "mes": 5,
+        "anio": 2025,
+        "id_presupuesto": 1
+    },
+    {
+        "id_categoria": 6,
+        "monto_presupuesto": 60000.0,
+        "descripcion": "Presupuesto carniceria",
+        "mes": 7,
+        "anio": 2025,
+        "id_presupuesto": 2
+    }
+]

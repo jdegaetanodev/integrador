@@ -1,14 +1,30 @@
 [
     {
         "id_categoria": 1,
-        "nombre_categoria": "Supermercado 123"
+        "nombre_categoria": "Supermercado"
     },
     {
         "id_categoria": 2,
-        "nombre_categoria": "Transporte 2020"
+        "nombre_categoria": "Transporte"
     },
     {
         "id_categoria": 3,
         "nombre_categoria": "Verduleria"
+    },
+    {
+        "id_categoria": 4,
+        "nombre_categoria": "Combustible"
+    },
+    {
+        "id_categoria": 5,
+        "nombre_categoria": "Gastos varios"
+    },
+    {
+        "id_categoria": 6,
+        "nombre_categoria": "Carniceria"
+    },
+    {
+        "id_categoria": 7,
+        "nombre_categoria": "Servicios"
     }
 ]
