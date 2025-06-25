@@ -998,5 +998,13 @@
         "descripcion": "Gasto imprevisto",
         "categoria": "Servicios",
         "detalle": "Compra online"
+    },
+    {
+        "id_gastos": 101,
+        "nombre": "",
+        "id_categoria": 4,
+        "monto": "",
+        "fecha": "",
+        "descripcion": ""
     }
 ]

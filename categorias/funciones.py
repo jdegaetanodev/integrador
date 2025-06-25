@@ -166,4 +166,8 @@ def exportar_categorias():
         messagebox.showerror("Error", f"Error al exportar categorías a Excel:\n{e}")    
 
 def validar_datos(categoria_txt):   
-    return True    
+    
+    if len(categoria_txt) < 5:
+        return False
+    else:
+        return True

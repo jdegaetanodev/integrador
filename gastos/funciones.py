@@ -194,4 +194,8 @@ def exportar_gastos():
         messagebox.showerror("Error", f"Error al exportar gastos a Excel:\n{e}")
 
 def validar_datos(id_categoria, nombre, monto, fecha, detalle):    
-    return True      
+    
+    if id_categoria is None or nombre is None or monto is None or fecha is None or detalle is None:
+        return False
+    else:
+        return True
