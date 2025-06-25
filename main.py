@@ -198,7 +198,7 @@ tabla_gastos.bind("<ButtonRelease-1>", clic_grid_gastos)
 
 # </-----Fin Frame Gastos----->
 
-frame_gastos.grid(row=0, column=0, sticky="nsew")
+#frame_gastos.grid(row=0, column=0, sticky="nsew")
 
 # <-----Inicio Frame Gastos Fijos ----->
 
@@ -431,6 +431,9 @@ btn_nuevo.pack(side="left")
 
 
 # <-----Fin Frame Categorias ----->
+
+frame_categorias.grid(row=0, column=0, sticky="nsew")
+
 
 
 # <-----Inicio Frame Presupuestos ----->
