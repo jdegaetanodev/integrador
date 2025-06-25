@@ -1,6 +1,12 @@
 # integrador
 ---------------- Trabajo práctico Integrador para Programación I de la UNER ----------------
 
+Requisitos
+
+matplotlib 
+Se instala con: pip install matplotlib
+
+
 
 ------------------------------ División del trabajo realizado ------------------------------
 

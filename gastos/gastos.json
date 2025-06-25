@@ -1,50 +1,1002 @@
 [
     {
         "id_gastos": 1,
-        "nombre": "Prueba de Gasto",
-        "id_categoria": 1,
-        "monto": "30000",
-        "fecha": "15/05/2025",
-        "descripcion": "Descripcion de Gasto"
+        "nombre": "Gasto 1",
+        "id_categoria": 2,
+        "monto": "6595",
+        "fecha": "06/02/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Transporte",
+        "detalle": "Carga de combustible"
     },
     {
         "id_gastos": 2,
-        "nombre": "Nafta",
-        "id_categoria": 2,
-        "monto": "83000",
-        "fecha": "01/01/2024",
-        "descripcion": "Descripción de Gastos",
-        "categoria": "Combustible",
-        "detalle": "Descripción de Gastos"
+        "nombre": "Gasto 2",
+        "id_categoria": 8,
+        "monto": "78544",
+        "fecha": "26/06/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Varios",
+        "detalle": "Suscripción mensual"
     },
     {
         "id_gastos": 3,
-        "nombre": "Alimento para perros",
-        "id_categoria": 3,
-        "monto": "27500",
-        "fecha": "01/01/2024",
-        "descripcion": "Descripción de gastos",
-        "categoria": "Verduleria",
-        "detalle": "Descripción de gastos"
+        "nombre": "Gasto 3",
+        "id_categoria": 1,
+        "monto": "23559",
+        "fecha": "28/06/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Alquiler",
+        "detalle": "Consumo personal"
     },
     {
         "id_gastos": 4,
-        "nombre": "Reparación bicicleta",
-        "id_categoria": 2,
-        "monto": "12000",
-        "fecha": "01/01/2020",
-        "descripcion": "Cambio de la cubierta de la bici",
-        "categoria": "Transporte",
-        "detalle": "Cambio de la cubierta de la bici"
+        "nombre": "Gasto 4",
+        "id_categoria": 5,
+        "monto": "62682",
+        "fecha": "07/04/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Ocio",
+        "detalle": "Consumo personal"
     },
     {
         "id_gastos": 5,
-        "nombre": "Almuerzo en oficina",
+        "nombre": "Gasto 5",
+        "id_categoria": 7,
+        "monto": "8764",
+        "fecha": "21/05/2025",
+        "descripcion": "Salida con amigos",
+        "categoria": "Educación",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 6,
+        "nombre": "Gasto 6",
+        "id_categoria": 1,
+        "monto": "30834",
+        "fecha": "26/03/2025",
+        "descripcion": "Salida con amigos",
+        "categoria": "Alquiler",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 7,
+        "nombre": "Gasto 7",
+        "id_categoria": 4,
+        "monto": "46178",
+        "fecha": "21/01/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Servicios",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 8,
+        "nombre": "Gasto 8",
         "id_categoria": 5,
-        "monto": "2000",
-        "fecha": "01/01/2022",
-        "descripcion": "Sandwich y Gaseosa",
-        "categoria": "Verduleria",
-        "detalle": "Sandwich y Gaseosa"
+        "monto": "13102",
+        "fecha": "14/04/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Ocio",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 9,
+        "nombre": "Gasto 9",
+        "id_categoria": 3,
+        "monto": "60058",
+        "fecha": "06/04/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Alimentos",
+        "detalle": "Compra online"
+    },
+    {
+        "id_gastos": 10,
+        "nombre": "Gasto 10",
+        "id_categoria": 5,
+        "monto": "7142",
+        "fecha": "14/01/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Ocio",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 11,
+        "nombre": "Gasto 11",
+        "id_categoria": 5,
+        "monto": "28163",
+        "fecha": "11/03/2025",
+        "descripcion": "Consumo personal",
+        "categoria": "Ocio",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 12,
+        "nombre": "Gasto 12",
+        "id_categoria": 2,
+        "monto": "40565",
+        "fecha": "10/03/2025",
+        "descripcion": "Salida con amigos",
+        "categoria": "Transporte",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 13,
+        "nombre": "Gasto 13",
+        "id_categoria": 2,
+        "monto": "3023",
+        "fecha": "01/05/2025",
+        "descripcion": "Compra online",
+        "categoria": "Transporte",
+        "detalle": "Gasto imprevisto"
+    },
+    {
+        "id_gastos": 14,
+        "nombre": "Gasto 14",
+        "id_categoria": 8,
+        "monto": "8752",
+        "fecha": "05/04/2025",
+        "descripcion": "Compra online",
+        "categoria": "Varios",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 15,
+        "nombre": "Gasto 15",
+        "id_categoria": 5,
+        "monto": "20111",
+        "fecha": "12/04/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Ocio",
+        "detalle": "Pago de servicio"
+    },
+    {
+        "id_gastos": 16,
+        "nombre": "Gasto 16",
+        "id_categoria": 4,
+        "monto": "23808",
+        "fecha": "23/03/2025",
+        "descripcion": "Compra mensual",
+        "categoria": "Servicios",
+        "detalle": "Pago de servicio"
+    },
+    {
+        "id_gastos": 17,
+        "nombre": "Gasto 17",
+        "id_categoria": 2,
+        "monto": "42728",
+        "fecha": "30/05/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Transporte",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 18,
+        "nombre": "Gasto 18",
+        "id_categoria": 8,
+        "monto": "11775",
+        "fecha": "18/01/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Varios",
+        "detalle": "Recurrente mensual"
+    },
+    {
+        "id_gastos": 19,
+        "nombre": "Gasto 19",
+        "id_categoria": 5,
+        "monto": "49768",
+        "fecha": "09/02/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Ocio",
+        "detalle": "Pago de servicio"
+    },
+    {
+        "id_gastos": 20,
+        "nombre": "Gasto 20",
+        "id_categoria": 3,
+        "monto": "28967",
+        "fecha": "21/03/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Alimentos",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 21,
+        "nombre": "Gasto 21",
+        "id_categoria": 6,
+        "monto": "79847",
+        "fecha": "06/04/2025",
+        "descripcion": "Compra mensual",
+        "categoria": "Salud",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 22,
+        "nombre": "Gasto 22",
+        "id_categoria": 6,
+        "monto": "38951",
+        "fecha": "22/04/2025",
+        "descripcion": "Salida con amigos",
+        "categoria": "Salud",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 23,
+        "nombre": "Gasto 23",
+        "id_categoria": 7,
+        "monto": "13290",
+        "fecha": "04/01/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Educación",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 24,
+        "nombre": "Gasto 24",
+        "id_categoria": 4,
+        "monto": "34911",
+        "fecha": "08/02/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Servicios",
+        "detalle": "Gasto imprevisto"
+    },
+    {
+        "id_gastos": 25,
+        "nombre": "Gasto 25",
+        "id_categoria": 3,
+        "monto": "47260",
+        "fecha": "14/03/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Alimentos",
+        "detalle": "Gasto imprevisto"
+    },
+    {
+        "id_gastos": 26,
+        "nombre": "Gasto 26",
+        "id_categoria": 3,
+        "monto": "53262",
+        "fecha": "23/05/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Alimentos",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 27,
+        "nombre": "Gasto 27",
+        "id_categoria": 5,
+        "monto": "12624",
+        "fecha": "07/04/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Ocio",
+        "detalle": "Compra online"
+    },
+    {
+        "id_gastos": 28,
+        "nombre": "Gasto 28",
+        "id_categoria": 2,
+        "monto": "78168",
+        "fecha": "24/03/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Transporte",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 29,
+        "nombre": "Gasto 29",
+        "id_categoria": 3,
+        "monto": "43808",
+        "fecha": "18/04/2025",
+        "descripcion": "Salida con amigos",
+        "categoria": "Alimentos",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 30,
+        "nombre": "Gasto 30",
+        "id_categoria": 6,
+        "monto": "60863",
+        "fecha": "03/06/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Salud",
+        "detalle": "Recurrente mensual"
+    },
+    {
+        "id_gastos": 31,
+        "nombre": "Gasto 31",
+        "id_categoria": 6,
+        "monto": "62756",
+        "fecha": "05/01/2025",
+        "descripcion": "Compra mensual",
+        "categoria": "Salud",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 32,
+        "nombre": "Gasto 32",
+        "id_categoria": 8,
+        "monto": "18461",
+        "fecha": "03/04/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Varios",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 33,
+        "nombre": "Gasto 33",
+        "id_categoria": 8,
+        "monto": "20478",
+        "fecha": "27/02/2025",
+        "descripcion": "Compra online",
+        "categoria": "Varios",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 34,
+        "nombre": "Gasto 34",
+        "id_categoria": 7,
+        "monto": "38156",
+        "fecha": "25/06/2025",
+        "descripcion": "Consumo personal",
+        "categoria": "Educación",
+        "detalle": "Carga de combustible"
+    },
+    {
+        "id_gastos": 35,
+        "nombre": "Gasto 35",
+        "id_categoria": 3,
+        "monto": "96918",
+        "fecha": "01/07/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Alimentos",
+        "detalle": "Recurrente mensual"
+    },
+    {
+        "id_gastos": 36,
+        "nombre": "Gasto 36",
+        "id_categoria": 6,
+        "monto": "41929",
+        "fecha": "23/06/2025",
+        "descripcion": "Compra mensual",
+        "categoria": "Salud",
+        "detalle": "Recurrente mensual"
+    },
+    {
+        "id_gastos": 37,
+        "nombre": "Gasto 37",
+        "id_categoria": 8,
+        "monto": "54996",
+        "fecha": "26/01/2025",
+        "descripcion": "Salida con amigos",
+        "categoria": "Varios",
+        "detalle": "Compra online"
+    },
+    {
+        "id_gastos": 38,
+        "nombre": "Gasto 38",
+        "id_categoria": 1,
+        "monto": "87423",
+        "fecha": "23/06/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Alquiler",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 39,
+        "nombre": "Gasto 39",
+        "id_categoria": 8,
+        "monto": "6214",
+        "fecha": "06/01/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Varios",
+        "detalle": "Carga de combustible"
+    },
+    {
+        "id_gastos": 40,
+        "nombre": "Gasto 40",
+        "id_categoria": 1,
+        "monto": "66335",
+        "fecha": "28/02/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Alquiler",
+        "detalle": "Compra online"
+    },
+    {
+        "id_gastos": 41,
+        "nombre": "Gasto 41",
+        "id_categoria": 2,
+        "monto": "69439",
+        "fecha": "24/03/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Transporte",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 42,
+        "nombre": "Gasto 42",
+        "id_categoria": 8,
+        "monto": "88854",
+        "fecha": "18/03/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Varios",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 43,
+        "nombre": "Gasto 43",
+        "id_categoria": 1,
+        "monto": "84910",
+        "fecha": "12/06/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Alquiler",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 44,
+        "nombre": "Gasto 44",
+        "id_categoria": 7,
+        "monto": "71010",
+        "fecha": "13/02/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Educación",
+        "detalle": "Gasto imprevisto"
+    },
+    {
+        "id_gastos": 45,
+        "nombre": "Gasto 45",
+        "id_categoria": 1,
+        "monto": "60122",
+        "fecha": "13/05/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Alquiler",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 46,
+        "nombre": "Gasto 46",
+        "id_categoria": 1,
+        "monto": "60995",
+        "fecha": "03/03/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Alquiler",
+        "detalle": "Carga de combustible"
+    },
+    {
+        "id_gastos": 47,
+        "nombre": "Gasto 47",
+        "id_categoria": 8,
+        "monto": "75587",
+        "fecha": "10/02/2025",
+        "descripcion": "Compra online",
+        "categoria": "Varios",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 48,
+        "nombre": "Gasto 48",
+        "id_categoria": 4,
+        "monto": "2714",
+        "fecha": "21/02/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Servicios",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 49,
+        "nombre": "Gasto 49",
+        "id_categoria": 2,
+        "monto": "21992",
+        "fecha": "09/06/2025",
+        "descripcion": "Compra online",
+        "categoria": "Transporte",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 50,
+        "nombre": "Gasto 50",
+        "id_categoria": 2,
+        "monto": "49408",
+        "fecha": "01/03/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Transporte",
+        "detalle": "Gasto imprevisto"
+    },
+    {
+        "id_gastos": 51,
+        "nombre": "Gasto 51",
+        "id_categoria": 8,
+        "monto": "2244",
+        "fecha": "18/04/2025",
+        "descripcion": "Compra online",
+        "categoria": "Varios",
+        "detalle": "Pago de servicio"
+    },
+    {
+        "id_gastos": 52,
+        "nombre": "Gasto 52",
+        "id_categoria": 6,
+        "monto": "22786",
+        "fecha": "10/01/2025",
+        "descripcion": "Compra online",
+        "categoria": "Salud",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 53,
+        "nombre": "Gasto 53",
+        "id_categoria": 1,
+        "monto": "75477",
+        "fecha": "23/02/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Alquiler",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 54,
+        "nombre": "Gasto 54",
+        "id_categoria": 7,
+        "monto": "92678",
+        "fecha": "28/06/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Educación",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 55,
+        "nombre": "Gasto 55",
+        "id_categoria": 5,
+        "monto": "44035",
+        "fecha": "27/05/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Ocio",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 56,
+        "nombre": "Gasto 56",
+        "id_categoria": 4,
+        "monto": "65887",
+        "fecha": "03/05/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Servicios",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 57,
+        "nombre": "Gasto 57",
+        "id_categoria": 6,
+        "monto": "67346",
+        "fecha": "14/01/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Salud",
+        "detalle": "Recurrente mensual"
+    },
+    {
+        "id_gastos": 58,
+        "nombre": "Gasto 58",
+        "id_categoria": 5,
+        "monto": "25240",
+        "fecha": "01/05/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Ocio",
+        "detalle": "Carga de combustible"
+    },
+    {
+        "id_gastos": 59,
+        "nombre": "Gasto 59",
+        "id_categoria": 8,
+        "monto": "22777",
+        "fecha": "24/02/2025",
+        "descripcion": "Compra online",
+        "categoria": "Varios",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 60,
+        "nombre": "Gasto 60",
+        "id_categoria": 3,
+        "monto": "90712",
+        "fecha": "05/02/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Alimentos",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 61,
+        "nombre": "Gasto 61",
+        "id_categoria": 2,
+        "monto": "22157",
+        "fecha": "10/06/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Transporte",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 62,
+        "nombre": "Gasto 62",
+        "id_categoria": 5,
+        "monto": "72955",
+        "fecha": "19/03/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Ocio",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 63,
+        "nombre": "Gasto 63",
+        "id_categoria": 6,
+        "monto": "24058",
+        "fecha": "11/02/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Salud",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 64,
+        "nombre": "Gasto 64",
+        "id_categoria": 5,
+        "monto": "83629",
+        "fecha": "03/05/2025",
+        "descripcion": "Consumo personal",
+        "categoria": "Ocio",
+        "detalle": "Recurrente mensual"
+    },
+    {
+        "id_gastos": 65,
+        "nombre": "Gasto 65",
+        "id_categoria": 6,
+        "monto": "23808",
+        "fecha": "12/01/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Salud",
+        "detalle": "Carga de combustible"
+    },
+    {
+        "id_gastos": 66,
+        "nombre": "Gasto 66",
+        "id_categoria": 8,
+        "monto": "14447",
+        "fecha": "30/01/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Varios",
+        "detalle": "Carga de combustible"
+    },
+    {
+        "id_gastos": 67,
+        "nombre": "Gasto 67",
+        "id_categoria": 6,
+        "monto": "76930",
+        "fecha": "04/02/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Salud",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 68,
+        "nombre": "Gasto 68",
+        "id_categoria": 4,
+        "monto": "73799",
+        "fecha": "06/03/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Servicios",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 69,
+        "nombre": "Gasto 69",
+        "id_categoria": 8,
+        "monto": "1628",
+        "fecha": "16/04/2025",
+        "descripcion": "Salida con amigos",
+        "categoria": "Varios",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 70,
+        "nombre": "Gasto 70",
+        "id_categoria": 7,
+        "monto": "8520",
+        "fecha": "18/01/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Educación",
+        "detalle": "Carga de combustible"
+    },
+    {
+        "id_gastos": 71,
+        "nombre": "Gasto 71",
+        "id_categoria": 5,
+        "monto": "51728",
+        "fecha": "09/06/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Ocio",
+        "detalle": "Recurrente mensual"
+    },
+    {
+        "id_gastos": 72,
+        "nombre": "Gasto 72",
+        "id_categoria": 3,
+        "monto": "32189",
+        "fecha": "03/05/2025",
+        "descripcion": "Consumo personal",
+        "categoria": "Alimentos",
+        "detalle": "Pago de servicio"
+    },
+    {
+        "id_gastos": 73,
+        "nombre": "Gasto 73",
+        "id_categoria": 3,
+        "monto": "35119",
+        "fecha": "18/02/2025",
+        "descripcion": "Compra online",
+        "categoria": "Alimentos",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 74,
+        "nombre": "Gasto 74",
+        "id_categoria": 3,
+        "monto": "74768",
+        "fecha": "29/03/2025",
+        "descripcion": "Consumo personal",
+        "categoria": "Alimentos",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 75,
+        "nombre": "Gasto 75",
+        "id_categoria": 6,
+        "monto": "87377",
+        "fecha": "04/01/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Salud",
+        "detalle": "Pago de servicio"
+    },
+    {
+        "id_gastos": 76,
+        "nombre": "Gasto 76",
+        "id_categoria": 7,
+        "monto": "43585",
+        "fecha": "19/06/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Educación",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 77,
+        "nombre": "Gasto 77",
+        "id_categoria": 8,
+        "monto": "22550",
+        "fecha": "12/02/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Varios",
+        "detalle": "Compra online"
+    },
+    {
+        "id_gastos": 78,
+        "nombre": "Gasto 78",
+        "id_categoria": 6,
+        "monto": "72843",
+        "fecha": "05/01/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Salud",
+        "detalle": "Gasto imprevisto"
+    },
+    {
+        "id_gastos": 79,
+        "nombre": "Gasto 79",
+        "id_categoria": 1,
+        "monto": "67820",
+        "fecha": "13/05/2025",
+        "descripcion": "Compra online",
+        "categoria": "Alquiler",
+        "detalle": "Pago de servicio"
+    },
+    {
+        "id_gastos": 80,
+        "nombre": "Gasto 80",
+        "id_categoria": 1,
+        "monto": "89030",
+        "fecha": "13/05/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Alquiler",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 81,
+        "nombre": "Gasto 81",
+        "id_categoria": 4,
+        "monto": "54374",
+        "fecha": "12/02/2025",
+        "descripcion": "Compra mensual",
+        "categoria": "Servicios",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 82,
+        "nombre": "Gasto 82",
+        "id_categoria": 1,
+        "monto": "38379",
+        "fecha": "29/06/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Alquiler",
+        "detalle": "Compra online"
+    },
+    {
+        "id_gastos": 83,
+        "nombre": "Gasto 83",
+        "id_categoria": 5,
+        "monto": "2735",
+        "fecha": "03/03/2025",
+        "descripcion": "Pago de servicio",
+        "categoria": "Ocio",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 84,
+        "nombre": "Gasto 84",
+        "id_categoria": 4,
+        "monto": "74721",
+        "fecha": "04/05/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Servicios",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 85,
+        "nombre": "Gasto 85",
+        "id_categoria": 1,
+        "monto": "6954",
+        "fecha": "26/01/2025",
+        "descripcion": "Consumo personal",
+        "categoria": "Alquiler",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 86,
+        "nombre": "Gasto 86",
+        "id_categoria": 1,
+        "monto": "90056",
+        "fecha": "23/03/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Alquiler",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 87,
+        "nombre": "Gasto 87",
+        "id_categoria": 8,
+        "monto": "29200",
+        "fecha": "04/04/2025",
+        "descripcion": "Consumo personal",
+        "categoria": "Varios",
+        "detalle": "Carga de combustible"
+    },
+    {
+        "id_gastos": 88,
+        "nombre": "Gasto 88",
+        "id_categoria": 2,
+        "monto": "36758",
+        "fecha": "10/02/2025",
+        "descripcion": "Consumo personal",
+        "categoria": "Transporte",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 89,
+        "nombre": "Gasto 89",
+        "id_categoria": 8,
+        "monto": "44785",
+        "fecha": "02/03/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Varios",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 90,
+        "nombre": "Gasto 90",
+        "id_categoria": 3,
+        "monto": "79606",
+        "fecha": "28/03/2025",
+        "descripcion": "Recurrente mensual",
+        "categoria": "Alimentos",
+        "detalle": "Suscripción mensual"
+    },
+    {
+        "id_gastos": 91,
+        "nombre": "Gasto 91",
+        "id_categoria": 1,
+        "monto": "43010",
+        "fecha": "14/02/2025",
+        "descripcion": "Compra online",
+        "categoria": "Alquiler",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 92,
+        "nombre": "Gasto 92",
+        "id_categoria": 8,
+        "monto": "80339",
+        "fecha": "04/02/2025",
+        "descripcion": "Compra mensual",
+        "categoria": "Varios",
+        "detalle": "Compra mensual"
+    },
+    {
+        "id_gastos": 93,
+        "nombre": "Gasto 93",
+        "id_categoria": 5,
+        "monto": "35050",
+        "fecha": "19/05/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Ocio",
+        "detalle": "Consumo personal"
+    },
+    {
+        "id_gastos": 94,
+        "nombre": "Gasto 94",
+        "id_categoria": 4,
+        "monto": "98350",
+        "fecha": "04/04/2025",
+        "descripcion": "Suscripción mensual",
+        "categoria": "Servicios",
+        "detalle": "Salida con amigos"
+    },
+    {
+        "id_gastos": 95,
+        "nombre": "Gasto 95",
+        "id_categoria": 7,
+        "monto": "32140",
+        "fecha": "01/07/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Educación",
+        "detalle": "Compra online"
+    },
+    {
+        "id_gastos": 96,
+        "nombre": "Gasto 96",
+        "id_categoria": 1,
+        "monto": "99942",
+        "fecha": "10/02/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Alquiler",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 97,
+        "nombre": "Gasto 97",
+        "id_categoria": 4,
+        "monto": "42102",
+        "fecha": "05/01/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Servicios",
+        "detalle": "Pago de servicio"
+    },
+    {
+        "id_gastos": 98,
+        "nombre": "Gasto 98",
+        "id_categoria": 3,
+        "monto": "43734",
+        "fecha": "27/04/2025",
+        "descripcion": "Reparación o mantenimiento",
+        "categoria": "Alimentos",
+        "detalle": "Reparación o mantenimiento"
+    },
+    {
+        "id_gastos": 99,
+        "nombre": "Gasto 99",
+        "id_categoria": 3,
+        "monto": "9063",
+        "fecha": "10/05/2025",
+        "descripcion": "Carga de combustible",
+        "categoria": "Alimentos",
+        "detalle": "Recurrente mensual"
+    },
+    {
+        "id_gastos": 100,
+        "nombre": "Gasto 100",
+        "id_categoria": 4,
+        "monto": "15730",
+        "fecha": "17/06/2025",
+        "descripcion": "Gasto imprevisto",
+        "categoria": "Servicios",
+        "detalle": "Compra online"
     }
 ]

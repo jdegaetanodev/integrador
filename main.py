@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk # Importo el TreeView
 from categorias.funciones import cargar_categorias
 import os
+import matplotlib.pyplot as plt # Libreria para gráficos
 
 # Funciones
 
@@ -568,10 +569,53 @@ tabla_presupuestos.bind("<ButtonRelease-1>", clic_grid_presupuestos)
 frame_reportes = tk.Frame(frame_contenedor, padx=20, pady=20)
 
 label = tk.Label(frame_reportes, text="Reportes", pady="15",anchor="w",font=("Helvetica", 12, "bold"))
-label.grid(row=1, column=0, sticky="w", padx=0)
+label.grid(row=0, column=0, sticky="w", padx=0)
+
+frame_filtros = tk.Frame(frame_reportes, padx=0, pady=20)
+frame_filtros.grid(row=1, column=0, sticky="nsew")
+
+# --- Campo Categoría ---
+label_categoria = tk.Label(frame_filtros, text="Categoría:")
+label_categoria.grid(row=0, column=0, padx=5)
+
+# Completar el ComboBox
+mapa_categorias = {}
+
+for categoria in categorias:     
+    mapa_categorias[categoria["nombre_categoria"]] = categoria["id_categoria"]
+
+# Agregar la opción "Todas" al inicio
+valores_categorias = ["Todas"] + list(mapa_categorias.keys())
+
+combo_categoria = ttk.Combobox(frame_filtros, width=25, values=list(mapa_categorias.keys()))
+
+combo_categoria.grid(row=0, column=1, padx=5)
+combo_categoria.set("Todas")
+
+# Fin Completar el ComboBox
+
+
+# --- Campo Año ---
+label_anio = tk.Label(frame_filtros, text="Año:")
+label_anio.grid(row=0, column=2, padx=5)
+combo_anio = ttk.Combobox(frame_filtros, values=["Todos", "2024", "2025"])
+combo_anio.grid(row=0, column=3, padx=5)
+combo_anio.set("2025")
+
+# --- Campo Mes ---
+label_mes = tk.Label(frame_filtros, text="Mes:")
+label_mes.grid(row=0, column=4, padx=5)
+combo_mes = ttk.Combobox(frame_filtros, values=["Todos"] + [str(m) for m in range(1, 13)])
+combo_mes.grid(row=0, column=5, padx=5)
+combo_mes.set("1")
+
+# --- Botón Filtrar ---
+btn_filtrar = tk.Button(frame_filtros, text="Filtrar", command=lambda: mostrar_reportes())
+btn_filtrar.grid(row=0, column=6, padx=10)
+
 
 # <Inicio Treeview>
-tabla_reportes = ttk.Treeview(frame_reportes, columns=("ID", "IdCat", "Categoria","Nombre","Monto","Detalle","Fecha"), show="headings", height=26)
+tabla_reportes = ttk.Treeview(frame_reportes, columns=("ID", "IdCat", "Categoria","Nombre","Monto","Detalle","Fecha"), show="headings", height=15)
 tabla_reportes.heading("ID", text="ID Gasto")
 tabla_reportes.heading("IdCat", text="Id Cat")
 tabla_reportes.heading("Categoria", text="Categoría")
@@ -588,6 +632,93 @@ tabla_reportes.column("Nombre", width=120,anchor='w')
 tabla_reportes.column("Monto", width=80,anchor='e')
 tabla_reportes.column("Detalle", width=200,anchor='w')
 tabla_reportes.column("Fecha", width=80,anchor='e')
+
+from datetime import datetime
+
+
+def mostrar_reportes():
+    for fila in tabla_reportes.get_children():
+        tabla_reportes.delete(fila)
+
+    categoria_seleccionada = combo_categoria.get()
+    anio_seleccionado = combo_anio.get()
+    mes_seleccionado = combo_mes.get()
+
+    total = 0
+
+    for gasto in gastos:
+        try:
+            fecha_gasto = datetime.strptime(gasto["fecha"], "%d/%m/%Y")
+        except ValueError:
+            continue
+
+        anio_gasto = str(fecha_gasto.year)
+        mes_gasto = str(fecha_gasto.month)
+
+        anio_valido = (anio_seleccionado == "Todos" or anio_gasto == anio_seleccionado)
+        mes_valido = (mes_seleccionado == "Todos" or mes_gasto == mes_seleccionado)
+
+        categoria_valida = (
+            categoria_seleccionada == "Todas"
+            or categorias_dict.get(gasto['id_categoria'], {}).get('nombre_categoria') == categoria_seleccionada
+        )
+
+        if categoria_valida and anio_valido and mes_valido:
+            categoria_nombre = categorias_dict.get(gasto['id_categoria'], {}).get('nombre_categoria', 'Desconocida')
+            tabla_reportes.insert("", "end", values=(
+                gasto['id_gastos'],
+                gasto['id_categoria'],
+                categoria_nombre,
+                gasto['nombre'],
+                gasto['monto'],
+                gasto['descripcion'],
+                gasto['fecha']
+            ))
+            total += float(gasto['monto'])
+
+    # Intentando mostrar el grafico !!!!
+    # Datos para el gráfico
+    distribucion = {}
+
+    for gasto in gastos:
+        try:
+            fecha_gasto = datetime.strptime(gasto["fecha"], "%d/%m/%Y")
+        except ValueError:
+            continue
+
+        anio_gasto = str(fecha_gasto.year)
+        mes_gasto = str(fecha_gasto.month)
+
+        anio_valido = (anio_seleccionado == "Todos" or anio_gasto == anio_seleccionado)
+        mes_valido = (mes_seleccionado == "Todos" or mes_gasto == mes_seleccionado)
+
+        categoria_valida = (
+            categoria_seleccionada == "Todas"
+            or categorias_dict.get(gasto['id_categoria'], {}).get('nombre_categoria') == categoria_seleccionada
+        )
+
+        if categoria_valida and anio_valido and mes_valido:
+            cat = categorias_dict.get(gasto['id_categoria'], {}).get('nombre_categoria', 'Desconocida')
+            monto = float(gasto['monto'])
+            distribucion[cat] = distribucion.get(cat, 0) + monto
+
+    # Mostrar gráfico si hay datos
+    if distribucion:
+        categorias = list(distribucion.keys())
+        montos = list(distribucion.values())
+
+        plt.figure(figsize=(7, 7))
+        plt.pie(montos, labels=categorias, autopct='%1.1f%%', startangle=90)
+        plt.title("Distribución de Gastos por Categoría")
+        plt.axis('equal')  # Para que sea circular
+        plt.show()
+        # Fin Intentando mostrar el grafico !!!!
+
+
+
+    total_label = tk.Label(frame_reportes, text=f"Total: $ {total:.2f}")
+    total_label.grid(row=5, column=0, padx=10, pady=20, sticky="w")
+
 
 tabla_reportes.grid()
 
