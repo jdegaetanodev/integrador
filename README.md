@@ -3,8 +3,14 @@
 
 Requisitos
 
-matplotlib 
+matplotlib (genera el gráfico en el módulo de reportes)
 Se instala con: pip install matplotlib
+
+Openpyxl (funcionalidad de exportación):
+pip install openpyxl 
+
+Pillow (para imagenes): 
+python -m pip install Pillow 
 
 
 
