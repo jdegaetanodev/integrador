@@ -1,20 +1,5 @@
 import funciones
-import importlib.util
 import os
-
-RUTA_DICT = os.path.join("datos", "gastos.py")
-
-def mostrar_diccionario_actual():
-    try:
-        spec = importlib.util.spec_from_file_location("gastos", RUTA_DICT)
-        modulo = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(modulo)
-        print("\n📁 Diccionario actual en datos/gastos.py:")
-        # Asumimos que modulo.gastos es una lista de dicts:
-        for g in modulo.gastos:
-            print(f"ID: {g.get('id_gastos', 'N/A')} - Categoria: {g.get('id_categoria', 'N/A')} - Nombre: {g.get('nombre', '')} - Monto: {g.get('monto', 0)} - Detalle: {g.get('detalle', '')} - Fecha: {g.get('fecha', '')}")
-    except Exception as e:
-        print(f"Error al cargar el diccionario: {e}")
 
 def listar_gastos():
     gastos = funciones.cargar_gastos()
@@ -23,7 +8,7 @@ def listar_gastos():
     else:
         print("\nListado de gastos:")
         for g in gastos:
-            print(f"ID: {g['id_gastos']} - Categoria: {g['id_categoria']} - Nombre: {g['nombre']} - Monto: {g['monto']} - Detalle: {g['detalle']} - Fecha: {g['fecha']}")
+            print(f"ID: {g['id_gastos']} - Categoria: {g['id_categoria']} - Nombre: {g['nombre']} - Monto: {g['monto']} - Detalle: {g.get('detalle','')} - Fecha: {g.get('fecha','')}")
 
 def agregar_gasto():
     try:
@@ -42,17 +27,11 @@ def agregar_gasto():
         return
     detalle = input("Ingrese detalle: ").strip()
     fecha = input("Ingrese la fecha (AAAA-MM-DD): ").strip()
-    gasto = {
-        "id_categoria": id_categoria,
-        "nombre": nombre,
-        "monto": monto,
-        "detalle": detalle,
-        "fecha": fecha
-    }
-    resultado = funciones.add_gasto(gasto)
+
+    # Aquí se llaman los parámetros individuales
+    resultado = funciones.add_gasto(nombre, id_categoria, monto, fecha, detalle, ventana_gastos=None)
     if resultado:
         print("Gasto agregado correctamente.")
-        mostrar_diccionario_actual()
     else:
         print("Error al agregar el gasto.")
 
@@ -78,17 +57,12 @@ def modificar_gasto():
         return
     detalle = input("Ingrese el nuevo detalle: ").strip()
     fecha = input("Ingrese la nueva fecha (AAAA-MM-DD): ").strip()
-    nuevo_gasto = {
-        "id_categoria": id_categoria,
-        "nombre": nombre,
-        "monto": monto,
-        "detalle": detalle,
-        "fecha": fecha
-    }
-    resultado = funciones.update_gasto(id_gasto, nuevo_gasto)
+
+    # La función update_gasto requiere id_gasto, id_categoria, nombre, categoria (?), monto, fecha, detalle, ventana_gasto, callback_actualizar
+    # Aquí el parámetro 'categoria' no tiene sentido, pasamos '' y ventana None, callback None para evitar errores
+    resultado = funciones.update_gasto(id_gasto, id_categoria, nombre, '', monto, fecha, detalle, ventana_gasto=None, callback_actualizar=None)
     if resultado:
         print("Gasto modificado correctamente.")
-        mostrar_diccionario_actual()
     else:
         print("No se pudo modificar el gasto (ID no encontrado).")
 
@@ -105,9 +79,14 @@ def eliminar_gasto():
     resultado = funciones.delete_gasto(id_gasto)
     if resultado:
         print("Gasto eliminado correctamente.")
-        mostrar_diccionario_actual()
     else:
         print("No se pudo eliminar el gasto (ID no encontrado).")
+
+def exportar_gastos_a_excel():
+    try:
+        funciones.exportar_gastos()
+    except Exception as e:
+        print(f"Error en la exportación: {e}")
 
 def mostrar_menu():
     print("\n--- Menú Gastos ---")
@@ -115,7 +94,7 @@ def mostrar_menu():
     print("2. Agregar gasto")
     print("3. Modificar gasto")
     print("4. Eliminar gasto")
-    print("5. Ver diccionario actual")
+    print("5. Exportar gastos a Excel")
     print("6. Salir")
 
 def main():
@@ -132,7 +111,7 @@ def main():
         elif opcion == "4":
             eliminar_gasto()
         elif opcion == "5":
-            mostrar_diccionario_actual()
+            exportar_gastos_a_excel()
         elif opcion == "6":
             print("Saliendo...")
             break

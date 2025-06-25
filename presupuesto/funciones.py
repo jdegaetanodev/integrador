@@ -1,9 +1,12 @@
 import os
 import json
 from tkinter import messagebox
+import openpyxl
+from openpyxl.utils import get_column_letter
 
-RUTA_JSON = os.path.join("presupuesto", "presupuesto.json")
+RUTA_JSON = os.path.join(os.path.dirname(__file__), "presupuesto.json")
 RUTA_DICT = os.path.join("datos", "presupuesto.py")
+RUTA_EXCEL = os.path.join(os.path.dirname(__file__), "presupuesto_exportados.xlsx")
 
 def cargar_presupuestos():
     if not os.path.exists(RUTA_JSON):
@@ -81,4 +84,57 @@ def delete_presupuesto(id_presupuesto):
         return False
 
 def exportar_presupuesto():
-    messagebox.showinfo("Éxito", "En esta Función se exportan los Presupuestos")
+    try:
+        # Cargar los datos de los presupuestos
+        presupuestos = cargar_presupuestos()
+        if not presupuestos:
+            print("No hay presupuestos para exportar.")
+            return False
+
+        # Crear el libro y la hoja
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Presupuestos"
+
+        # Definir los encabezados
+        encabezados = ["Orden", "Categoría", "Monto Presupuesto", "Descripción", "Mes", "Año"]
+        ws.append(encabezados)
+
+        # Rellenar los datos
+        for presupuesto in presupuestos:
+            fila = [
+                presupuesto['id_presupuesto'],
+                presupuesto['id_categoria'],
+                presupuesto['monto_presupuesto'],
+                presupuesto['descripcion'],
+                presupuesto['mes'],
+                presupuesto['anio']
+            ]
+            ws.append(fila)
+
+        # Ajustar el ancho de las columnas automáticamente
+        for col in range(1, len(encabezados) + 1):
+            columna = get_column_letter(col)
+            max_length = 0
+            for row in ws.iter_rows(min_col=col, max_col=col):
+                for cell in row:
+                    try:
+                        if len(str(cell.value)) > max_length:
+                            max_length = len(cell.value)
+                    except:
+                        pass
+            adjusted_width = (max_length + 2)
+            ws.column_dimensions[columna].width = adjusted_width
+
+        # Definir la ruta del archivo exportado
+        ruta_archivo = os.path.join(os.path.dirname(__file__), "presupuesto_exportados.xlsx")
+        
+        # Guardar el archivo
+        wb.save(ruta_archivo)
+        
+        # Mensaje de éxito con la ruta del archivo
+        messagebox.showinfo("Éxito", f"Archivo exportado con éxito a:\n{ruta_archivo}")
+        return True  # Aseguramos que la función retorne True al final
+    except Exception as e:
+        messagebox.showerror("Error", f"Error al exportar presupuestos a Excel:\n{e}")
+        return False

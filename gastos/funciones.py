@@ -1,9 +1,13 @@
 import os
 import json
 from tkinter import messagebox
+import openpyxl
+from openpyxl.utils import get_column_letter
 
-RUTA_JSON = os.path.join("gastos", "gastos.json")
+RUTA_JSON = os.path.join(os.path.dirname(__file__), "gastos.json")
 RUTA_DICT = os.path.join("datos", "gastos.py")
+RUTA_EXCEL = os.path.join(os.path.dirname(__file__), "gastos_exportados.xlsx")
+
 
 def cargar_gastos():
     if not os.path.exists(RUTA_JSON):
@@ -136,7 +140,58 @@ def delete_gasto(id_gasto):
         return False
 
 def exportar_gastos():
-    messagebox.showinfo("Éxito", "En esta Función se exportan los Gastos")
+    try:
+        # Cargar los datos de los gastos
+        gastos = cargar_gastos()
+        if not gastos:
+            print("No hay gastos para exportar.")
+            return False
+
+        # Crear el libro y la hoja
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Gastos"
+
+        # Definir los encabezados
+        encabezados = ["Orden", "Categoría", "Nombre", "Monto", "Detalle", "Fecha"]
+        ws.append(encabezados)
+
+        # Rellenar los datos
+        for gasto in gastos:
+            fila = [
+                gasto['id_gastos'],
+                gasto['id_categoria'],
+                gasto['nombre'],
+                gasto['monto'],
+                gasto['detalle'],
+                gasto['fecha']
+            ]
+            ws.append(fila)
+
+        # Ajustar el ancho de las columnas automáticamente
+        for col in range(1, len(encabezados) + 1):
+            columna = get_column_letter(col)
+            max_length = 0
+            for row in ws.iter_rows(min_col=col, max_col=col):
+                for cell in row:
+                    try:
+                        if len(str(cell.value)) > max_length:
+                            max_length = len(cell.value)
+                    except:
+                        pass
+            adjusted_width = (max_length + 2)
+            ws.column_dimensions[columna].width = adjusted_width
+
+           # Definir la ruta del archivo exportado
+        ruta_archivo = os.path.join(os.path.dirname(__file__), "gastos_exportados.xlsx")
+        
+        # Guardar el archivo
+        wb.save(ruta_archivo)
+        
+        # Mensaje de éxito con la ruta del archivo
+        messagebox.showinfo("Éxito", f"Archivo exportado con éxito a:\n{ruta_archivo}")
+    except Exception as e:
+        messagebox.showerror("Error", f"Error al exportar gastos a Excel:\n{e}")
 
 def validar_datos(id_categoria, nombre, monto, fecha, detalle):    
     return True      

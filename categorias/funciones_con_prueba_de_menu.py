@@ -1,19 +1,19 @@
 import funciones
-import importlib.util
 import os
 
-RUTA_DICT = os.path.join("datos", "categorias.py")
+RUTA_JSON = os.path.join("categorias", "categorias.json")
 
 def mostrar_diccionario_actual():
     try:
-        spec = importlib.util.spec_from_file_location("categorias", RUTA_DICT)
-        modulo = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(modulo)
-        print("\n📁 Diccionario actual en datos/categorias.py:")
-        for c in modulo.categorias:
+        categorias = funciones.cargar_categorias()
+        if not categorias:
+            print("No hay categorías cargadas.")
+            return
+        print("\n📁 Categorías cargadas desde JSON:")
+        for c in categorias:
             print(f"ID: {c['id_categoria']} - Nombre: {c['nombre_categoria']}")
     except Exception as e:
-        print(f"Error al cargar el diccionario: {e}")
+        print(f"Error al cargar las categorías desde JSON: {e}")
 
 def listar_categorias():
     categorias = funciones.cargar_categorias()
@@ -29,7 +29,7 @@ def agregar_categoria():
     if not nombre:
         print("Nombre vacío, operación cancelada.")
         return
-    resultado = funciones.add_categoria(nombre)
+    resultado = funciones.add_categoria(nombre, ventana_categoria=None)  # Pasamos None para mantener compatibilidad
     if resultado:
         print("Categoría agregada correctamente.")
         mostrar_diccionario_actual()
@@ -47,7 +47,7 @@ def modificar_categoria():
     if not nombre:
         print("Nombre vacío, operación cancelada.")
         return
-    resultado = funciones.update_categoria(id_categoria, nombre)
+    resultado = funciones.update_categoria(id_categoria, nombre, ventana_categoria=None)
     if resultado:
         print("Categoría modificada correctamente.")
         mostrar_diccionario_actual()
@@ -72,14 +72,25 @@ def eliminar_categoria():
     else:
         print("No se pudo eliminar la categoría (ID no encontrado).")
 
+def exportar_categorias():
+    try:
+        resultado = funciones.exportar_categorias()
+        if resultado:
+            print("Categorías exportadas a Excel correctamente.")
+        else:
+            print("Error al exportar las categorías a Excel.")
+    except Exception as e:
+        print(f"Error en la exportación: {e}")
+
 def mostrar_menu():
     print("\n--- Menú Categorías ---")
     print("1. Listar categorías")
     print("2. Agregar categoría")
     print("3. Modificar categoría")
     print("4. Eliminar categoría")
-    print("5. Ver diccionario actual")
-    print("6. Salir")
+    print("5. Ver categorías actuales (JSON)")
+    print("6. Exportar categorías a Excel")
+    print("7. Salir")
 
 def main():
     while True:
@@ -97,6 +108,8 @@ def main():
         elif opcion == "5":
             mostrar_diccionario_actual()
         elif opcion == "6":
+            exportar_categorias()
+        elif opcion == "7":
             print("Saliendo...")
             break
         else:
