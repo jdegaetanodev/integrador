@@ -20,21 +20,25 @@ Alumno Acuña Silvia
 
 * Diseño de Wireframes para las pantallas
 * Programación de las Interfaces en Tkinter
+* Generación de Graficos con Matplolib
 
 Alumno De Gaetano Jorge
 
 * Programación de la interacción entre la interfaz gráfica y los procesos de gestión de datos.
 * Llenado dinámico de los TreeViews y formularios
+* Validación de datos
+* Testeo General
 
 Alumno Rodriguez Rodrigo 
 
 * Diseño de los diccionarios
-* Testeo de la aplicación
 
 Alumno Rossi Alejandro
 
 * Creación de las funciones que guarda y actulizan los datos
 * Almacenado y recuperación desde los archivos Json
+* Procesos de Exportación de datos a xls
+* Testeo General
 
 
 
