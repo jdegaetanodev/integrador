@@ -73,6 +73,7 @@ def update_categoria(id_categoria, categoria_txt, ventana_categoria, callback_ac
         except Exception as e:
             print("Error en update_categoria:", e)
             messagebox.showerror("Error", "Ocurrió un error al actualizar la categoría.")
+            callback_actualizar()
             return False
         
     else:
@@ -105,6 +106,7 @@ def add_categoria(categoria_txt, ventana_categoria, callback_actualizar=None):
         except Exception as e:
             print("Error en add_categoria:", e)
             messagebox.showerror("Error", "Ocurrió un error al añadir la categoría.")
+            callback_actualizar()
             return False
     
     else:

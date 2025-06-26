@@ -429,11 +429,9 @@ btn_nuevo.pack(side="left")
 # Fin Button Nuevo
 
 
-
 # <-----Fin Frame Categorias ----->
 
 frame_categorias.grid(row=0, column=0, sticky="nsew")
-
 
 
 # <-----Inicio Frame Presupuestos ----->
@@ -737,7 +735,7 @@ frame_botones.grid(row=0, column=2,rowspan=5)
 ruta_imagen = os.path.join("imagenes", "wallet.png")
 img_gastos = Image.open(ruta_imagen)
 
-img_gastos = img_gastos.resize((40, 40))  # Ajustá el tamaño según lo que necesites
+img_gastos = img_gastos.resize((40, 40))  # De aca se cambia el tamaño del icono
 img_gastos = ImageTk.PhotoImage(img_gastos)
 
 boton_gastos = tk.Button(

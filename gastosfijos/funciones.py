@@ -137,7 +137,5 @@ def exportar_gastos_fijos():
         messagebox.showerror("Error", f"Error al exportar gastos fijos a Excel:\n{e}")
 
 
-
-
 def validar_datos():
     return True         

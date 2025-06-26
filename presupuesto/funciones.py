@@ -42,7 +42,7 @@ def guardar_diccionario(presupuestos):
         with open(RUTA_DICT, "w", encoding="utf-8") as archivo:
             archivo.write(texto)
     except:
-        pass  # Podés loguear o imprimir error si querés
+        pass  
 
 def add_presupuesto(presupuesto):
     """
