@@ -1,12 +1,12 @@
 import os
 import json
 from tkinter import messagebox
-import openpyxl  # gente, primero mporten localmente con esto: pip install openpyxl
+import openpyxl  # recuerden primero importar localmente con esto: pip install openpyxl
 from openpyxl.utils import get_column_letter
 
 RUTA_JSON = os.path.join(os.path.dirname(__file__), "categorias.json")
 RUTA_DICT = os.path.join("datos", "categorias.py")
-RUTA_EXCEL = os.path.join(os.path.dirname(__file__), "categorias_exportadas.xlsx")  # Ruta para el archivo Excel
+RUTA_EXCEL = os.path.join(os.path.dirname(__file__), "categorias_exportadas.xlsx")  
 
 def cargar_categorias():
     if not os.path.exists(RUTA_JSON):
@@ -128,25 +128,25 @@ def exportar_categorias():
     try:
         categorias = cargar_categorias()
         if not categorias:
-            messagebox.showwarning("Advertencia", "No hay categorías para exportar.")  # Mensaje de advertencia si no hay categorías
+            messagebox.showwarning("Advertencia", "No hay categorías para exportar.") 
             return
 
-        # Crear un libro de trabajo (workbook)
+        # Libro de trabajo (por eso workbook)
         wb = openpyxl.Workbook()
         ws = wb.active
         ws.title = "Categorías"
         
-        # Establecer encabezados
+        # Aca le pongo el nombre a los encabezados, si quieren modificarlos no hay drama
         ws.append(["Orden", "Nombre de Categoría"])
 
-        # Agregar filas con los datos de categorías
+        # Agregado de filas
         for categoria in categorias:
             ws.append([categoria["id_categoria"], categoria["nombre_categoria"]])
 
         # Ajustar el ancho de las columnas
         for col in ws.columns:
             max_length = 0
-            column = col[0].column_letter  # Obtener la letra de la columna
+            column = col[0].column_letter 
             for cell in col:
                 try:
                     if len(str(cell.value)) > max_length:
@@ -156,13 +156,13 @@ def exportar_categorias():
             adjusted_width = (max_length + 2)
             ws.column_dimensions[column].width = adjusted_width
 
-        # Definir la ruta del archivo exportado
+        # Aca digo donde quiero que se guarde
         ruta_archivo = os.path.join(os.path.dirname(__file__), "categorias_exportadas.xlsx")
         
         # Guardar el archivo
         wb.save(ruta_archivo)
         
-        # Mensaje de éxito con la ruta del archivo
+        # Y si todo sale lindo...
         messagebox.showinfo("Éxito", f"Archivo exportado con éxito a:\n{ruta_archivo}")
     except Exception as e:
         messagebox.showerror("Error", f"Error al exportar categorías a Excel:\n{e}")    

@@ -35,3 +35,11 @@ Alumno Rossi Alejandro
 
 * Creación de las funciones que guarda y actulizan los datos
 * Almacenado y recuperación desde los archivos Json
+
+
+
+----------------------------------------- Observaciones --------------------------------------
+
+Dentro del módulo de cada entidad se encuentra un archivo "funciones_con_prueba_de_menu.py". 
+Este archivo genera un menú en consola/terminal que se utilizó para facilitar la prueba de las 
+funciones durante el desarrollo, sin necesidad de ejecutar la interfaz gráfica en cada cambio.
